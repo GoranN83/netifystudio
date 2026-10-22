@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Netify Studio — home</title>
+</head>
+<body>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&amp;family=Newsreader:opsz,wght@6..72,300..600&amp;display=swap">
+<style>
+body{margin:0;background:#0f2826}
+a{color:#141716}a:hover{color:#c63d17}
+.ns{font-family:'Geist',system-ui,sans-serif;background:#ffffff;color:#141716;-webkit-font-smoothing:antialiased;overflow-x:clip}
+/* plutajuće zaglavlje */
+.skip{position:fixed;left:16px;top:16px;z-index:200;transform:translateY(-200%);display:inline-flex;align-items:center;min-height:44px;padding:12px 16px;border-radius:999px;background:#141716;color:#fff;font-size:14px;font-weight:600;text-decoration:none}
+.skip:focus{transform:none}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;padding:16px 0;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.hdr.hide{transform:translateY(-110%)}
+.hdr:focus-within{transform:none}
+.hdr .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0;padding:8px 0;border-radius:999px;border:1px solid transparent;transition:background .35s,box-shadow .35s,border-color .35s,margin .35s,padding .35s}
+.hdr.on .bar{margin:0 -16px;padding:8px 10px 8px 16px;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-color:#e8e8e5;box-shadow:0 1px 2px rgba(20,23,22,.04),0 16px 36px -18px rgba(20,23,22,.28)}
+.ns *{box-sizing:border-box}
+.serif{font-family:'Newsreader',Georgia,serif;font-optical-sizing:auto}
+.wrap{max-width:1200px;margin:0 auto;padding-left:48px;padding-right:48px}
+.sec{padding-top:96px}
+.h2{margin:0;font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(32px,3.4vw,48px);line-height:1.06;letter-spacing:-0.015em;color:#141716;text-wrap:balance}
+.lead{margin:0;font-size:16px;line-height:1.6;color:#5f6563}
+.em{color:inherit}
+
+/* male oznake iznad naslova */
+.tag{display:inline-flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:999px;background:#fdeae4;color:#a83411;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;line-height:1}
+.tag .chip{background:#d4401a;color:#fff;border-radius:999px;padding:4px 8px;letter-spacing:.06em}
+.tag.dark{background:rgba(255,255,255,.1);color:#f3d6cc}
+.tag.dark .chip{background:#d4401a;color:#fff}
+
+/* dugmad-pilule */
+.btn{display:inline-flex;align-items:center;gap:16px;min-height:50px;padding:4px 4px 4px 24px;border-radius:999px;background:#141716;color:#fff;font-size:16px;font-weight:500;text-decoration:none;white-space:nowrap;border:0;cursor:pointer;font-family:inherit;box-shadow:0 12px 26px -12px rgba(20,23,22,.55);transition:translate .35s cubic-bezier(.2,.7,.2,1),background .35s,box-shadow .35s}
+a.btn,a.btn:hover{color:#fff}
+.btn .dot{width:40px;height:40px;flex:none;border-radius:50%;background:#f0532c;color:#fff;display:grid;place-items:center;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.btn:hover{translate:0 -2px;background:#000;box-shadow:0 20px 36px -14px rgba(20,23,22,.6)}
+.btn:hover .dot{transform:rotate(-45deg)}
+.btn.light{background:#fff;color:#141716;box-shadow:0 12px 26px -12px rgba(0,0,0,.6)}
+a.btn.light,a.btn.light:hover{color:#141716}
+.btn.light .dot{background:#f0532c;color:#fff}
+.btn.light:hover{background:#f4f4f2}
+.btn.sm{min-height:48px;font-size:14px;padding-left:16px}
+.btn.sm .dot{width:34px;height:34px}
+.ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 24px;border-radius:999px;border:1px solid #dcdcd8;background:#fff;color:#141716;font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap;transition:border-color .35s,background .35s,translate .35s}
+a.ghost:hover{color:#141716}
+.ghost:hover{border-color:#141716;translate:0 -2px}
+.ghost.dark{background:transparent;border-color:rgba(255,255,255,.25);color:#fff}
+a.ghost.dark:hover{color:#fff;border-color:#fff}
+
+/* kartice */
+.card{background:#fff;border:1px solid #ececea;border-radius:18px;box-shadow:0 1px 2px rgba(20,23,22,.03),0 10px 30px -22px rgba(20,23,22,.18);transition:translate .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,border-color .45s}
+.card:hover{translate:0 -6px;border-color:#f6d3c7;box-shadow:0 2px 4px rgba(20,23,22,.03),0 28px 50px -26px rgba(20,23,22,.28)}
+.card h3{transition:color .35s}
+.card:hover h3{color:#c63d17}
+.ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex:none;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.ic.t1{background:#fdeae4;color:#e0461e}
+.ic.t2{background:#e8f0fd;color:#2f6bdb}
+.ic.t3{background:#efeafd;color:#6b46d9}
+.ic.t4{background:#fde8ec;color:#d63353}
+.card:hover .ic{transform:scale(1.08) rotate(-5deg)}
+.float-card{background:#fff;border:1px solid #efefec;border-radius:16px;box-shadow:0 22px 44px -22px rgba(20,23,22,.28)}
+
+/* slike sa hover efektom */
+.zoom{overflow:hidden}
+.zoom img,.zoom .shot{transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.zoom:hover img,.zoom:hover .shot,.card:hover .zoom img,.card:hover .zoom .shot{transform:scale(1.05)}
+.shot{background-image:url(assets/417adb8e9b6f114310f1280aff7f16b8.png);background-repeat:no-repeat;background-size:385.5% auto;aspect-ratio:498/328;width:100%}
+.shot.s1{background-position:7.7% 65.2%}
+.shot.s2{background-position:50.03% 64.64%;background-size:407.6% auto}
+.shot.s3{background-position:92.3% 65.2%}
+
+/* tekst linkovi */
+.tl{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .4s cubic-bezier(.2,.7,.2,1);padding-bottom:4px}
+.tl:hover{background-size:100% 1px}
+.more{display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:500;color:#141716;text-decoration:none}
+.more svg{transition:transform .4s}
+.card:hover .more svg,.more:hover svg{transform:translateX(4px)}
+
+/* raspored */
+.nav-links{display:flex}
+section[id]{scroll-margin-top:80px}
+.logo-link{display:flex;align-items:center;min-height:44px}
+.ft-logo{display:flex;align-items:center;min-height:44px}
+.lang{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}
+.ft-col li a{min-height:44px}
+/* mobilni meni */
+.menu-btn .ic-close{display:none}
+.hdr.menu-open .menu-btn .ic-open{display:none}
+.hdr.menu-open .menu-btn .ic-close{display:block}
+.hdr.menu-open{transform:none}
+.hdr.menu-open .bar{background:transparent;border-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.hdr.menu-open .logo-link{color:#fff}
+.hdr.menu-open .lang{color:rgba(255,255,255,.75)}
+.hdr.menu-open a.lang.on,.hdr.menu-open a.lang.on:hover{background:#fff;color:#141716;border-color:#fff}
+.mnav{position:fixed;inset:0;z-index:45;display:flex;flex-direction:column;justify-content:space-between;gap:32px;overflow-y:auto;background:#0f2826;color:#fff;padding:104px max(24px,env(safe-area-inset-right)) max(32px,env(safe-area-inset-bottom)) max(24px,env(safe-area-inset-left));opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .3s,transform .3s,visibility 0s linear .3s}
+.mnav.open{opacity:1;visibility:visible;transform:none;transition:opacity .3s,transform .3s}
+.mnav ul{margin:0;padding:0;list-style:none}
+.mnav li a{display:flex;align-items:center;justify-content:space-between;min-height:64px;border-bottom:1px solid rgba(255,255,255,.12);font-family:'Newsreader',Georgia,serif;font-size:32px;line-height:1.1;color:#fff;text-decoration:none}
+.mnav li a svg{color:#f0532c;flex:none}
+.mnav-foot{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.mnav-tel{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:16px;color:rgba(255,255,255,.8);text-decoration:none}
+@media (min-width: 1024px){.mnav{display:none}}
+@media (min-width: 1024px) and (max-width: 1199px){.ns .ft-top{grid-template-columns:repeat(3,minmax(0,1fr))}.ns .ft-brand{grid-column:1 / -1;max-width:560px}.ns .pk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ns .hp-video{transform:scale(1.5) translate(16%,-8%)}.ns .hp-text{max-width:460px}}
+@media (pointer: coarse){.ns .ft-bottom{padding-bottom:calc(48px + env(safe-area-inset-bottom))}}
+@media (pointer: fine){.ns .ft-col li a{min-height:36px}}
+@media (pointer: coarse){.ns.framed .ft-bottom{padding-bottom:calc(128px + env(safe-area-inset-bottom))}}
+@media (hover: none){.ns .btn:hover,.ns .ghost:hover,.ns .card:hover{translate:none}.ns .btn:hover .dot,.ns .ft-social a:hover,.ns .pj-btn:hover,.ns .ft-up:hover span,.ns .rez-link:hover svg{transform:none}}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+.menu-btn{display:none;padding:0}
+/* hero — petrol panel sa animacijom */
+.hero2{padding:0}
+.hp{position:relative;isolation:isolate;overflow:hidden;border-radius:0;color:#fff;min-height:clamp(680px,100vh,960px);min-height:clamp(680px,100svh,960px);background:linear-gradient(135deg,#215f5a 0%,#1b4d49 50%,#163d3a 100%)}
+.hp-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.4) translate(12%,-8%);pointer-events:none;z-index:-2}
+.hp-scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(13,36,33,.55) 0%,rgba(13,36,33,.22) 40%,rgba(13,36,33,0) 62%),linear-gradient(0deg,rgba(13,36,33,.5) 0%,rgba(13,36,33,0) 32%)}
+.hp-inner{display:flex;flex-direction:column;min-height:inherit;padding-top:96px;padding-bottom:32px}
+.hp-mid{flex:1;display:flex;align-items:flex-start;padding:64px 0 48px}
+.hp-text{max-width:520px;display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.hp-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
+.hp-list{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:0;padding:0;list-style:none;font-size:14px;color:rgba(255,255,255,.82)}
+.hp-list li+li::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:#f0532c;margin-right:16px;vertical-align:middle}
+.cue{display:inline-flex;align-items:center;gap:16px;min-height:44px;min-width:44px;color:rgba(255,255,255,.72);text-decoration:none;transition:color .35s}
+.mouse{position:relative;width:24px;height:40px;border:1.5px solid currentColor;border-radius:12px}
+.mouse::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:currentColor}
+a.cue:hover{color:#fff}
+.cue-line{position:relative;width:1px;height:40px;background:rgba(255,255,255,.22);overflow:hidden}
+.cue-line::after{content:"";position:absolute;left:0;top:0;width:1px;height:40%;background:#fff}
+/* zaglavlje preko tamnog heroja */
+.logo-link{color:#141716;transition:color .35s}
+.nav-links a{display:inline-flex;align-items:center;min-height:44px;color:#3d4442;transition:color .35s}
+.nav-links a:hover{color:#c63d17}
+.lang{padding:8px 12px;border-radius:999px;text-decoration:none;border:1px solid transparent;color:#5f6563;transition:background .35s,color .35s,border-color .35s}
+a.lang.on,a.lang.on:hover{background:#141716;color:#fff;border-color:#141716}
+.hdr:not(.on) .logo-link{color:#fff}
+.hdr:not(.on) .nav-links a{color:rgba(255,255,255,.85)}
+.hdr:not(.on) .nav-links a:hover{color:#fff}
+.hdr:not(.on) .lang{color:rgba(255,255,255,.75)}
+.hdr:not(.on) a.lang.on,.hdr:not(.on) a.lang.on:hover{background:#fff;color:#141716;border-color:#fff}
+.band-pad{padding-top:96px;padding-bottom:96px}
+.svc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:48px}
+.svc{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;align-content:start;background:#fff;border:1px solid #ebe9e4;border-radius:20px;padding:32px 24px;box-shadow:0 1px 2px rgba(20,23,22,.03),0 16px 32px -28px rgba(20,23,22,.25)}
+.svc-ill{height:112px;margin-bottom:24px;border-radius:14px;background:#f0f4f3;overflow:hidden}
+.svc-ill svg{display:block;width:100%;height:100%}
+.ic.tk{background:#e3eeeb}
+.svc h3{margin:0 0 8px;font-size:18px;font-weight:600;line-height:1.3;color:#141716;text-wrap:balance;align-self:end}
+.svc p{margin:0;font-size:14px;line-height:1.6;color:#5f6563;text-wrap:pretty}
+/* pristup — tamna petrol sekcija sa tokom rada */
+.pristup{position:relative;isolation:isolate;overflow:hidden;background:#ffffff;color:#141716}
+.pr-deco g:first-child{stroke:#163d3a;stroke-opacity:.14}
+.pr-deco g:last-child circle{fill:#163d3a}
+.pr-deco{position:absolute;right:-64px;top:32px;width:640px;height:auto;opacity:.45;z-index:-1;pointer-events:none}
+.pr-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:end;align-items:last baseline}
+.pr-line{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:48px 0 24px}
+.pr-node{display:flex;align-items:center;gap:16px;padding-left:24px}
+.pr-node i{width:12px;height:12px;flex:none;border-radius:50%;background:#f0532c;box-shadow:0 0 0 6px rgba(240,83,44,.18)}
+.pr-node b{flex:1;height:1px;background:#e3e0d8}
+.pr-node b.end{background:linear-gradient(90deg,#e3e0d8,rgba(227,224,216,0))}
+.pr-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:0;padding:0;list-style:none}
+.step{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;align-content:start;background:#f6f5f1;border:1px solid #ebe9e4;border-radius:20px;padding:32px 24px}
+.step-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+.step-n{font-family:'Newsreader',Georgia,serif;font-size:48px;line-height:1;letter-spacing:-.02em;color:#163d3a}
+.step-chip{padding:4px 12px;border-radius:999px;background:#fdeae4;color:#a83411;font-size:12px;font-weight:600;letter-spacing:.04em}
+.step h3{margin:0 0 8px;font-size:18px;font-weight:600;line-height:1.3;color:#141716}
+.step p{margin:0;font-size:14px;line-height:1.6;color:#5f6563;text-wrap:pretty}
+.step-out{display:flex;align-items:flex-start;gap:8px;margin-top:24px;padding-top:16px;border-top:1px solid #e3e0d8;font-size:14px;font-weight:500;line-height:1.4;color:#141716}
+.step-out svg{flex:none;margin-top:1px;color:#f0532c}
+/* rezultat — put klijenta */
+.rez{background:#faf9f6;border-top:1px solid #efede7}
+.rez-pano{margin-top:48px;aspect-ratio:1760/368;background-image:url(assets/417adb8e9b6f114310f1280aff7f16b8.png);background-repeat:no-repeat;background-size:109.09% auto;background-position:50% 66.52%}
+.rez-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:6.5%;margin:24px 0 0;padding:0 1.7%;list-style:none}
+.rez-shot{display:none}
+.rez-num{display:block;margin-bottom:8px;font-size:14px;font-weight:600;letter-spacing:.04em;color:#c63d17}
+.rez-item h3{margin:0 0 8px;font-size:18px;font-weight:600;line-height:1.3;color:#141716}
+.rez-item p{margin:0;font-size:14px;line-height:1.6;color:#5f6563;text-wrap:pretty}
+.rez-note{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:48px;padding-top:48px;border-top:1px solid #ebe9e4}
+.rez-note p{margin:0;font-size:24px;line-height:1.3;color:#141716}
+.rez-link{display:inline-flex;align-items:center;gap:8px;min-height:48px;font-size:16px;font-weight:500;color:#141716;text-decoration:none}
+.rez-link svg{color:#f0532c;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+a.rez-link:hover{color:#c63d17}
+.rez-link:hover svg{transform:translateX(4px)}
+/* projekat — video prikaz rada */
+.pj{background:#0f2826;color:#fff}
+.pj-frame{position:relative;margin:48px 0 0;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#153e3a;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 48px 96px -48px rgba(0,0,0,.7)}
+.pj-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.pj-ctrl{position:absolute;right:16px;bottom:16px;display:flex;gap:8px}
+.pj-btn{width:44px;height:44px;padding:0;border:0;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:#fff;background:rgba(15,40,38,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:background .3s,transform .3s cubic-bezier(.2,.7,.2,1)}
+.pj-btn:hover{background:rgba(15,40,38,.92);transform:scale(1.06)}
+.ns .pj-frame.pj-big{position:fixed;inset:0;z-index:9999;margin:0;width:100%;height:100%;aspect-ratio:auto;border-radius:0;background:#0f2826;box-shadow:none}
+.ns .pj-frame.pj-big video,.pj-frame:fullscreen video{object-fit:contain}
+.pj-frame:fullscreen{border-radius:0;background:#0f2826}
+.ns .pj-frame.pj-big .pj-ctrl{right:calc(16px + env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom))}
+.pj-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:48px 0 0}
+.pj-stats>div{padding:0 24px;border-left:1px solid rgba(255,255,255,.12)}
+.pj-stats>div:first-child{padding-left:0;border-left:0}
+.pj-stats dt{font-variant-numeric:tabular-nums;font-size:32px;font-weight:600;line-height:1.1;letter-spacing:-.02em;color:#fff}
+.pj-stats dd{margin:8px 0 0;font-size:14px;line-height:1.4;color:rgba(255,255,255,.7)}
+.pj-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;margin-top:48px;padding-top:48px;border-top:1px solid rgba(255,255,255,.12)}
+.pj-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.pj-chips li{padding:8px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.18);font-size:14px;color:rgba(255,255,255,.85)}
+/* tehnička izrada — lista bez kartica */
+.tech{background:#ffffff}
+.tech-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
+.tech-head{display:flex;flex-direction:column;align-items:flex-start;gap:16px;position:sticky;top:96px}
+.tech-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 48px;margin:0;padding:0;list-style:none}
+.tech-list li{display:flex;align-items:flex-start;gap:16px;padding-top:24px;border-top:1px solid #ebe9e4}
+.tech-list .ic{width:48px;height:48px}
+.tech-list h3{margin:0 0 8px;font-size:18px;font-weight:600;line-height:1.3;color:#141716}
+.tech-list p{margin:0;font-size:14px;line-height:1.6;color:#5f6563;text-wrap:pretty}
+/* Tehnička izrada — fotografija (pravi snimci ovog sajta ugrađeni u ekrane) */
+.tstage{margin:48px 0 0}
+.ts-photo{position:relative;aspect-ratio:2/1;border-radius:24px;overflow:hidden;background:#e9e3d8;box-shadow:inset 0 0 0 1px rgba(20,23,22,.06)}
+.ts-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;display:block}
+.ts-cap{margin:24px 0 0;text-align:center;font-size:14px;line-height:1.6;color:#5f6563;text-wrap:pretty}
+@media (max-width: 1023px){.ns .tstage{margin-top:48px}.ns .ts-photo{border-radius:20px}}
+@media (max-width: 600px){.ns .ts-photo{aspect-ratio:4/3;border-radius:16px}.ns .ts-cap{font-size:16px}}
+/* paketi — kartice cena */
+.pk{background:#f6f5f1}
+.pk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:48px}
+.pk-card{display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:0;background:#fff;border:1px solid #ebe9e4;border-radius:20px;padding:32px 24px;box-shadow:0 1px 2px rgba(20,23,22,.03),0 16px 32px -28px rgba(20,23,22,.25)}
+.pk-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:16px}
+.pk-eyebrow{display:block;margin-bottom:8px;font-size:12px;font-weight:600;line-height:1.4;letter-spacing:.1em;text-transform:uppercase;color:#a83411}
+.pk-from{font-size:14px;color:#5f6563}
+.pk-feat .pk-eyebrow{color:#ffbba3}
+.pk-feat .pk-from{color:rgba(255,255,255,.74)}
+.pk-top h3{margin:0;font-size:24px;font-weight:600;line-height:1.3;color:#141716}
+.pk-badge{padding:4px 12px;border-radius:999px;background:#d4401a;color:#fff;font-size:12px;font-weight:600;white-space:nowrap}
+.pk-price{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.pk-amount{font-size:32px;font-weight:600;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#141716}
+.pk-unit{font-size:14px;color:#5f6563}
+.pk-desc{margin:0 0 24px;font-size:14px;line-height:1.6;color:#5f6563;text-wrap:pretty}
+.pk-list{display:flex;flex-direction:column;gap:12px;margin:0 0 24px;padding:24px 0 0;list-style:none;border-top:1px solid #ebe9e4;font-size:14px;line-height:1.5;color:#3d4442}
+.pk-list li{position:relative;padding-left:24px}
+.pk-list li::before{content:"";position:absolute;left:2px;top:5px;width:10px;height:6px;border-left:2px solid #f0532c;border-bottom:2px solid #f0532c;transform:rotate(-45deg)}
+.pk-time{display:flex;align-items:center;gap:8px;margin-bottom:24px;padding:12px 16px;border-radius:12px;background:#f6f5f1;font-size:14px;font-weight:500;color:#141716;align-self:start}
+.pk-time svg{flex:none;color:#f0532c}
+.pk-feat .pk-time{background:rgba(255,255,255,.08);color:#fff}
+.pk-cta{align-self:end;justify-self:start}
+.pk-feat{background:#163d3a;border-color:#163d3a;box-shadow:0 32px 64px -36px rgba(22,61,58,.7)}
+.pk-feat .pk-top h3,.pk-feat .pk-amount{color:#fff}
+.pk-feat .pk-unit,.pk-feat .pk-desc{color:rgba(255,255,255,.74)}
+.pk-feat .pk-list{color:rgba(255,255,255,.88);border-top-color:rgba(255,255,255,.14)}
+.pk-note{display:flex;flex-wrap:wrap;align-items:flex-end;align-items:last baseline;justify-content:space-between;gap:16px 32px;margin-top:48px;padding-top:48px;border-top:1px solid #e6e3dc}
+.pk-note p{margin:0;font-size:16px;line-height:1.5;color:#3d4442;text-wrap:pretty}
+.pr-strip{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start;margin-top:48px;padding-top:48px;border-top:1px solid #ebe9e4}
+.pr-item{display:flex;align-items:flex-start;gap:16px;align-self:start}
+.pr-item>div{padding-top:4px}
+.pr-strip .btn{align-self:center}
+.pr-ic{width:48px;height:48px;flex:none;border-radius:12px;display:grid;place-items:center;background:#e3eeeb;color:#163d3a}
+.pr-item strong{display:block;white-space:nowrap;font-size:16px;font-weight:600;line-height:1.3}
+.pr-item .s{display:block;white-space:nowrap;margin-top:4px;font-size:14px;line-height:1.4;color:#5f6563}
+.kt{position:relative;isolation:isolate;overflow:hidden;background:#163d3a;color:#fff}
+.kt-deco{position:absolute;left:-96px;bottom:-48px;width:640px;height:auto;opacity:.9;z-index:-1;pointer-events:none}
+.cta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.kt-form{justify-self:end;width:100%;max-width:440px;display:flex;flex-direction:column;gap:16px;background:#fff;color:#141716;border-radius:20px;padding:32px;box-shadow:0 48px 96px -48px rgba(0,0,0,.6)}
+/* podnožje */
+.ft{position:relative;overflow:hidden;background:#0f2826;color:#fff}
+.ft-top{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:32px 48px;padding:64px 0 48px}
+.ft-logo{display:block;width:fit-content;color:#fff}
+.ft-brand p{margin:16px 0 0;max-width:320px;font-size:16px;line-height:1.6;color:rgba(255,255,255,.74);text-wrap:pretty}
+.ft-social{display:flex;gap:8px;margin-top:24px}
+.ft-social a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.ft-social a.soc-ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+.ft-social a.soc-li{background:#0a66c2}
+.ft-social a.soc-fb{background:#1877f2}
+.ft-social a:hover{color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}
+.ft-col h2{margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.ft-col ul{margin:0;padding:0;list-style:none}
+.ft-col li a{display:inline-flex;align-items:center;gap:8px;min-height:44px;min-width:44px;font-size:14px;color:rgba(255,255,255,.82);text-decoration:none;transition:color .3s}
+.ft-col li a:hover{color:#fff}
+.ft-col li a svg{color:#f0532c}
+.ft-cta{margin-top:16px}
+.ft-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:24px 0 calc(24px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,255,255,.12);font-size:14px;color:rgba(255,255,255,.62)}
+.ft-up{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:rgba(255,255,255,.82);text-decoration:none}
+.ft-up span{width:36px;height:36px;border-radius:50%;background:#f0532c;color:#fff;display:grid;place-items:center;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.ft-up:hover{color:#fff}
+.ft-up:hover span{transform:translateY(-3px)}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{font-size:14px;font-weight:500;color:#3d4442}
+.field input,.field textarea{width:100%;min-width:0;box-sizing:border-box;font:inherit;font-size:16px;color:#141716;background:#f7f7f5;border:1px solid #e6e6e2;border-radius:12px;padding:12px 16px;min-height:48px;transition:border-color .3s,background .3s,box-shadow .3s}
+.field input:hover,.field textarea:hover{border-color:#c9c9c4}
+.field input:focus,.field textarea:focus{outline:none;border-color:#f0532c;background:#fff;box-shadow:0 0 0 4px rgba(240,83,44,.14)}
+.kt-note{margin:0;max-width:460px;font-size:14px;line-height:1.5;color:#5f6563}
+.kt-note a{color:#141716;font-weight:600;padding:12px 0;white-space:nowrap}
+.ns a:focus-visible,.ns button:focus-visible{outline:2px solid #f0532c;outline-offset:3px}
+
+@media (min-width: 768px) and (max-width: 1023px){.ns .ft-top{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:32px}.ns .ft-brand{grid-column:1 / -1;max-width:560px}.ns .ft-top>.ft-col:last-child{grid-column:auto}}
+@media (max-width: 1023px){.ns .step p{max-width:460px}}
+@media (max-width: 359px){.ns .btn{font-size:14px;gap:12px;padding-left:16px}.ns .ghost{padding-left:16px;padding-right:16px}}
+@media (max-width: 600px){
+  .ns .wrap{padding-left:max(24px,env(safe-area-inset-left));padding-right:max(24px,env(safe-area-inset-right))}
+  .ns .rez-steps{grid-template-columns:1fr;row-gap:48px}
+  .ns .pj-stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}
+  .ns .pj-stats>div:nth-child(3){padding-left:0;border-left:0}
+  .svc p,.step p,.tech-list p,.rez-item p,.pk-desc,.pk-list,.ft-col li a,.ft-brand p{font-size:16px}
+  .hp-list{font-size:14px;gap:8px 12px}
+  .hp-list li+li::before{margin-right:12px}
+  .ns .svc-grid{grid-template-columns:1fr}
+  .ns .tech-list{grid-template-columns:1fr}
+  .ns .pk-grid{grid-template-columns:minmax(0,1fr)}
+  .ns .ft-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px;padding:64px 0 48px}
+  .ns .step-out,.ns .pr-item .s,.ns .kt-note{font-size:16px}
+  .ns .pr-item .s{white-space:normal}
+  .ns .step-out svg{margin-top:3px}
+  .ns .ft-brand,.ns .ft-top>.ft-col:last-child{grid-column:1 / -1}
+  .ns .ft-bottom{flex-wrap:nowrap;gap:16px;padding-bottom:calc(48px + env(safe-area-inset-bottom));font-size:14px}
+  .ns .ft-up{flex:none;gap:0;font-size:0}
+  .ns .ft-up span{width:44px;height:44px}
+}
+@media (max-width: 1023px){
+  .wrap{padding-left:max(32px,env(safe-area-inset-left));padding-right:max(32px,env(safe-area-inset-right))}
+  .sec{padding-top:64px}
+  .band-pad{padding-top:64px;padding-bottom:64px}
+  .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav-links{display:none}
+  .menu-btn{display:inline-flex}
+  .hide-md{display:none}
+  .hp{min-height:0}
+  .hp-video{inset:0 0 auto 0;height:58vh;height:58svh;transform:none;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,#000 70%,transparent 100%)}
+  .hp-scrim{background:linear-gradient(0deg,rgba(13,36,33,.85) 0%,rgba(13,36,33,.45) 42%,rgba(13,36,33,0) 66%)}
+  .hp-inner{padding-top:50vh;padding-top:50svh}
+  .hp-mid{align-items:flex-start;padding:0 0 48px}
+  .cue{display:none}
+  .cta,.pr-head,.pr-steps,.tech-grid{grid-template-columns:minmax(0,1fr)}
+  .ft-top{grid-template-columns:repeat(2,minmax(0,1fr));padding:64px 0 48px}
+  .ft-brand{grid-column:1 / -1}
+  .tech-grid{gap:48px}
+  .tech-head{position:static}
+  .cta{gap:48px}
+  .kt-form{justify-self:stretch;max-width:none;padding:24px}
+
+
+  .pj-foot{flex-direction:column;align-items:flex-start}
+  .pr-strip{flex-direction:column}
+  .rez-pano{display:none}
+  .rez-steps{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px;row-gap:48px;padding:0;margin-top:48px}
+  .rez-shot{display:block;border-radius:16px;border:1px solid #ebe9e4;margin-bottom:24px;box-shadow:0 16px 32px -28px rgba(20,23,22,.3)}
+  .pr-strip .btn{align-self:flex-start}
+  .pr-line{display:none}
+  .pr-steps{margin-top:48px}
+  .pr-deco{width:420px;right:-160px;opacity:.6}
+  .stagger{margin-top:0 !important}
+}
+
+/* animacije pri skrolovanju — tekst i slike se pojavljuju postepeno */
+@keyframes ns-rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes ns-fade{from{opacity:0}to{opacity:1}}
+@keyframes ns-img{from{opacity:0;clip-path:inset(12% 8% 12% 8% round 24px);transform:scale(1.06)}to{opacity:1;clip-path:inset(0 0 0 0 round 0);transform:none}}
+@keyframes ns-wheel{0%{opacity:0;transform:translateY(0)}20%{opacity:1}70%{opacity:1;transform:translateY(12px)}100%{opacity:0;transform:translateY(12px)}}
+@keyframes ns-cue{0%{transform:translateY(-100%)}100%{transform:translateY(260%)}}
+@media (prefers-reduced-motion: no-preference){
+  .motion .in{animation:ns-rise .95s cubic-bezier(.2,.7,.2,1) both}
+  .motion .in.d1{animation-delay:.08s}.motion .in.d2{animation-delay:.18s}.motion .in.d3{animation-delay:.3s}.motion .in.d4{animation-delay:.45s}.motion .in.d5{animation-delay:.6s}.motion .in.d6{animation-delay:.75s}
+  .motion .in-fade{animation:ns-fade 1.4s ease-out both}
+  .motion .cue-line::after{animation:ns-cue 2.4s cubic-bezier(.6,0,.3,1) infinite}
+  .motion .mouse::after{animation:ns-wheel 2.4s cubic-bezier(.6,0,.3,1) infinite}
+  /* jednokratno pojavljivanje pri skrolu nadole (klasu is-in dodaje skripta, samo jednom) */
+  .motion .rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),translate .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,border-color .45s}
+  .motion .rvi{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .motion .rv.is-in,.motion .rvi.is-in{opacity:1;transform:none}
+  .motion .rv.d2{transition-delay:.1s,.1s,0s,0s,0s}
+  .motion .rv.d3{transition-delay:.2s,.2s,0s,0s,0s}
+  .motion .rv.d4{transition-delay:.3s,.3s,0s,0s,0s}
+  .motion .tstage .ts-photo img{transform:scale(1.04);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+  .motion .tstage.is-in .ts-photo img{transform:none}
+}
+</style>
+
+
+<div class="ns" style="min-height: 100vh">
+<a class="skip" href="#vrh">Skip to content</a>
+
+<!-- ZAGLAVLJE -->
+<header class="hdr">
+ <div class="wrap">
+ <div class="bar">
+  <a class="logo-link" href="#vrh" aria-label="Netify Studio — home" style="display: block; flex: none">
+    <svg viewBox="280 340 905 380" role="img" aria-label="Netify Studio" style="height: 36px; width: auto; display: block"><g fill="currentColor" fill-rule="evenodd"><path d="M294 361 H362 C365 361 367 363 370 367 L509 553 V397 C509 373 499 363 475 363 V361 H547 V363 C521 363 513 375 513 398 V606 H499 C495 606 493 605 490 601 L330 386 V548 C330 584 344 603 377 604 V606 H284 V604 C315 602 327 584 327 548 V380 C317 367 309 363 294 363 Z"/><path d="M568 510 C566 572 584 600 622 600 C654 600 680 583 692 558 L695 558 C684 590 658 609 616 609 C563 609 530 577 530 530 C530 480 570 440 616 440 C662 440 696 468 696 510 Z M569 507 H659 C660 466 646 442 616 442 C590 442 574 466 569 507 Z"/><path d="M693 442 C721 439 745 414 751 388 H753 V441 H800 V444 H753 V570 C753 591 759 601 775 601 C787 601 799 594 807 583 L810 584 C800 600 785 609 765 609 C734 609 718 592 718 566 V444 H693 Z"/><path d="M811 451 C827 447 843 443 858 438 V571 C858 597 863 604 883 604 V606 H810 V604 C824 600 824 590 824 571 V480 C824 463 822 456 811 454 Z M861 393 C861 405 852 415 840 415 C828 415 818 405 818 393 C818 381 828 372 840 372 C852 372 861 381 861 393 Z"/><path d="M882 441 H907 V429 C907 380 946 345 990 345 C1014 345 1032 352 1032 367 C1032 379 1025 386 1014 386 C1003 386 997 377 997 366 C997 362 999 355 996 352 C993 349 988 348 983 349 C951 349 944 381 944 415 V441 H982 V444 H944 V570 C944 597 949 604 968 604 V606 H880 V604 C901 604 907 596 907 570 V444 H882 Z"/><path d="M973 441 H1058 V444 C1040 444 1036 454 1044 473 L1091 573 L1135 476 C1146 452 1135 444 1111 444 V441 H1180 V444 C1160 445 1149 460 1139 481 L1080 612 C1057 665 1045 700 1005 700 C991 700 984 692 984 681 C984 670 993 660 1004 660 C1015 660 1023 668 1023 680 C1023 685 1021 690 1018 694 C1041 691 1055 667 1073 618 L1000 463 C994 449 988 444 973 444 Z"/><path d="M479 713 V700 H480 C482 708 486 713 493 713 C500 713 504 709 504 703 C504 697 499 695 492 692 C484 689 479 687 479 680 C479 674 485 671 492 671 C498 671 502 672 506 674 V684 H504 C503 677 499 673 493 673 C487 673 484 676 484 680 C484 685 488 687 495 689 C503 692 508 695 508 702 C508 710 502 715 493 715 C487 715 484 712 481 712 L480 714 Z"/><path d="M563 673 H600 L601 683 H599 C598 676 595 674 587 674 V709 C587 713 588 713 592 713 V714 H574 V713 C579 713 580 713 580 709 V674 C571 674 566 676 565 683 H563 Z"/><path d="M654 673 H671 V674 C667 674 666 675 666 678 V700 C666 709 670 713 677 713 C685 713 689 708 689 700 V679 C689 675 688 674 684 674 V673 H696 V674 C692 674 692 675 692 679 V700 C692 710 686 715 676 715 C665 715 659 710 659 700 V678 C659 675 658 674 654 674 Z"/><path d="M746 673 H763 C777 673 784 681 784 693 C784 706 777 714 763 714 H746 V713 C750 713 751 712 751 709 V678 C751 675 750 674 746 674 Z M757 675 V711 C757 712 759 712 762 712 C772 712 777 705 777 693 C777 681 772 675 762 675 Z"/><path d="M839 673 H854 V674 C850 674 850 675 850 678 V709 C850 712 850 713 854 713 V714 H839 V713 C843 713 844 712 844 709 V678 C844 675 843 674 839 674 Z"/><path d="M926 671 C938 671 946 680 946 693 C946 706 938 715 926 715 C914 715 906 706 906 693 C906 680 914 671 926 671 Z M926 673 C917 673 913 680 913 693 C913 706 917 713 926 713 C935 713 939 706 939 693 C939 680 935 673 926 673 Z"/></g></svg>
+  </a>
+  <nav aria-label="Main navigation" class="nav-links" style="gap: 32px; align-items: center; font-size:14px">
+    <a class="tl" href="#usluge">Services</a>
+    <a class="tl" href="#pristup">Process</a>
+    <a class="tl" href="#projekat">Project</a>
+    <a class="tl" href="#paketi">Packages</a>
+    <a class="tl" href="#kontakt">Contact</a>
+  </nav>
+  <div style="display: flex; align-items: center; gap: 12px">
+    <div style="display: flex; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em">
+      <a class="lang" href="index.html" hreflang="sr">SR</a>
+      <a class="lang on" href="#vrh" aria-current="true">EN</a>
+    </div>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav" style="align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #f0532c; color: #fff; cursor: pointer"><svg class="ic-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg><svg class="ic-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+ </div>
+ </div>
+</header>
+<nav id="mnav" class="mnav" aria-label="Mobile menu">
+  <ul>
+    <li><a href="#usluge">Services<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    <li><a href="#pristup">Process<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    <li><a href="#projekat">Project<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    <li><a href="#paketi">Packages<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    <li><a href="#kontakt">Contact<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+  </ul>
+  <div class="mnav-foot">
+    <a class="btn light" href="#kontakt">Book a consultation<span class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="mnav-tel" href="tel:+38163489978">+381 63 489 978</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="vrh" class="hero2">
+  <div class="hp">
+    <video class="hp-video in-fade" data-hero-video="true" src="assets/c9fd66c73ffb986e4bb3a4db9537039d.mp4" poster="assets/c0b0a28b88835a2e68ff713acb6fac72.jpg" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" preload="auto" aria-hidden="true"></video>
+    <div class="hp-scrim" aria-hidden="true"></div>
+    <div class="wrap hp-inner">
+      <div class="hp-mid">
+        <div class="hp-text">
+          <span class="tag dark in"><span class="chip">Studio</span>Web design and development</span>
+          <h1 class="serif in d1" style="margin: 0; font-size: clamp(32px, 3.4vw, 48px); line-height: 1.06; font-weight: 400; letter-spacing: -0.018em; color: #ffffff; text-wrap: balance">A serious website for a serious business.</h1>
+          <p class="in d2" style="margin: 0; max-width: 420px; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.76)">We build websites for businesses that want to look serious and get enquiries. We guide you from the first conversation to launch, and you know the price and scope up front.</p>
+          <div class="in d3" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 24px">
+            <a class="btn light" href="#kontakt">Book a consultation<span class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+            <a class="ghost dark" href="#pristup" style="min-height: 50px">How we work</a>
+          </div>
+          <div class="in d4" style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: rgba(255,255,255,0.7)"><span style="width: 8px; height: 8px; border-radius: 50%; background: #f0532c"></span>Free consultations</div>
+        </div>
+      </div>
+      <div class="hp-foot in d5">
+        <ul class="hp-list" aria-label="What we do">
+          <li>Landing pages</li>
+          <li>Business websites</li>
+          <li>Portfolio</li>
+          <li>WordPress · Elementor</li>
+          <li>SEO essentials</li>
+          <li>Maintenance</li>
+        </ul>
+        <a class="cue" href="#usluge" aria-label="Scroll to services"><span class="mouse" aria-hidden="true"></span><span class="cue-line" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USLUGE -->
+<section id="usluge" class="band" style="background: #f6f5f1">
+  <div class="wrap band-pad">
+    <div class="rv" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+      <span class="tag"><span class="chip">Services</span>What we do</span>
+      <h2 class="h2">The right kind of website<br>for your <span class="em">business.</span></h2>
+      <p class="lead" style="max-width: 480px; text-wrap: pretty">We choose the solution based on your goal. Before we start, we put in writing what's included.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc rv">
+        <div class="svc-ill" aria-hidden="true"><svg viewBox="0 0 240 136" fill="none" stroke="#1b4d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(30 17) scale(.75)" stroke-opacity=".8"><rect x="44" y="20" width="152" height="104" rx="8" fill="#fff"/><path d="M44 36h152"/><circle cx="54" cy="28" r="2" fill="#1b4d49" stroke="none" opacity=".6"/><circle cx="62" cy="28" r="2" fill="#1b4d49" stroke="none" opacity=".35"/><circle cx="70" cy="28" r="2" fill="#1b4d49" stroke="none" opacity=".2"/><path d="M60 54h64" stroke-width="5"/><path d="M60 66h48" stroke-width="5"/><path d="M60 80h56M60 87h44" opacity=".4"/><rect x="60" y="98" width="40" height="12" rx="6" fill="#f0532c" stroke="none" opacity=".85"/><rect x="136" y="48" width="46" height="62" rx="6" fill="#e6efec"/><path d="M142 102l12-14 9 9 7-6 8 11" opacity=".6"/><circle cx="168" cy="62" r="4" opacity=".6"/></g></svg></div>
+
+        <h3>Landing page</h3>
+        <p>For a single offer, campaign or service that needs a clear path to enquiries.</p>
+      </article>
+      <article class="svc rv d2">
+        <div class="svc-ill" aria-hidden="true"><svg viewBox="0 0 240 136" fill="none" stroke="#1b4d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(30 17) scale(.75)" stroke-opacity=".8"><rect x="72" y="14" width="128" height="88" rx="8" fill="#fff" opacity=".5"/><rect x="58" y="24" width="128" height="88" rx="8" fill="#fff" opacity=".8"/><rect x="44" y="34" width="132" height="90" rx="8" fill="#fff"/><path d="M44 50h132"/><path d="M56 42h18" stroke-width="3"/><path d="M118 42h10M134 42h10M150 42h14" opacity=".5"/><circle cx="123" cy="46" r="2" fill="#f0532c" stroke="none"/><rect x="56" y="60" width="50" height="34" rx="5" fill="#e6efec"/><path d="M116 64h46M116 72h36M116 80h42" opacity=".4"/><rect x="56" y="102" width="30" height="12" rx="4" fill="#e6efec" stroke="none"/><rect x="92" y="102" width="30" height="12" rx="4" fill="#e6efec" stroke="none"/><rect x="128" y="102" width="34" height="12" rx="4" fill="#f0532c" stroke="none" opacity=".85"/></g></svg></div>
+
+        <h3>Business website</h3>
+        <p>For presenting your company and services, in one or two languages.</p>
+      </article>
+      <article class="svc rv d3">
+        <div class="svc-ill" aria-hidden="true"><svg viewBox="0 0 240 136" fill="none" stroke="#1b4d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(30 17) scale(.75)" stroke-opacity=".8"><rect x="44" y="20" width="152" height="104" rx="8" fill="#fff"/><path d="M44 36h152"/><path d="M56 28h20" stroke-width="3"/><rect x="56" y="46" width="40" height="32" rx="4" fill="#e6efec"/><rect x="100" y="46" width="40" height="32" rx="4" fill="#f0532c" stroke="none" opacity=".85"/><path d="M106 72l9-10 7 7 5-4 7 7" stroke="#fff" stroke-opacity="1"/><circle cx="129" cy="54" r="3" stroke="#fff" stroke-opacity="1"/><rect x="144" y="46" width="40" height="32" rx="4" fill="#e6efec"/><rect x="56" y="82" width="40" height="32" rx="4" fill="#e6efec"/><rect x="100" y="82" width="40" height="32" rx="4" fill="#e6efec"/><rect x="144" y="82" width="40" height="32" rx="4" fill="#e6efec"/></g></svg></div>
+
+        <h3>Portfolio website</h3>
+        <p>For anyone who wants to show their work and win new clients with it.</p>
+      </article>
+      <article class="svc rv d4">
+        <div class="svc-ill" aria-hidden="true"><svg viewBox="0 0 240 136" fill="none" stroke="#1b4d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(30 17) scale(.75)" stroke-opacity=".8"><rect x="44" y="20" width="132" height="96" rx="8" fill="#fff"/><path d="M44 36h132"/><path d="M56 28h20" stroke-width="3"/><path d="M58 52h70" stroke-width="4"/><path d="M58 64h88M58 72h76M58 80h84M58 88h60" opacity=".4"/><rect x="58" y="98" width="40" height="8" rx="4" fill="#e6efec" stroke="none"/><circle cx="174" cy="92" r="24" fill="#1b4d49" stroke="none" opacity=".9"/><path d="M185 86a12 12 0 1 0 1 8" stroke="#fff" stroke-opacity="1" stroke-width="2"/><path d="M186 79v8h-8" stroke="#fff" stroke-opacity="1" stroke-width="2"/><circle cx="194" cy="72" r="9" fill="#f0532c" stroke="none" opacity=".9"/><path d="M190 72l3 3 5-5.5" stroke="#fff" stroke-opacity="1" stroke-width="2"/></g></svg></div>
+
+        <h3>Website maintenance</h3>
+        <p>For an existing website that needs changes, fixes or regular updates.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRISTUP -->
+<section id="pristup" class="pristup">
+  <svg class="pr-deco" viewBox="0 0 640 420" aria-hidden="true">
+    <g stroke="#ffffff" stroke-opacity="0.16" stroke-width="1" fill="none">
+      <path d="M40 300L110 230L180 280L330 320L450 300L560 260L590 120L520 180L420 140L470 60M110 230L150 160L250 190L180 280M250 190L300 110L420 140L360 210L250 190M360 210L330 320M450 300L520 180M560 260L520 180"/>
+    </g>
+    <g fill="#ffffff">
+      <circle cx="40" cy="300" r="2" fill-opacity="0.5"/>
+      <circle cx="110" cy="230" r="2.5" fill-opacity="0.7"/>
+      <circle cx="180" cy="280" r="2" fill-opacity="0.5"/>
+      <circle cx="150" cy="160" r="2" fill-opacity="0.6"/>
+      <circle cx="250" cy="190" r="3" fill-opacity="0.8"/>
+      <circle cx="300" cy="110" r="2" fill-opacity="0.5"/>
+      <circle cx="360" cy="210" r="2.5" fill-opacity="0.7"/>
+      <circle cx="420" cy="140" r="3" fill-opacity="0.8"/>
+      <circle cx="470" cy="60" r="2" fill-opacity="0.5"/>
+      <circle cx="520" cy="180" r="2.5" fill-opacity="0.7"/>
+      <circle cx="590" cy="120" r="2" fill-opacity="0.5"/>
+      <circle cx="560" cy="260" r="2" fill-opacity="0.6"/>
+      <circle cx="450" cy="300" r="2.5" fill-opacity="0.7"/>
+      <circle cx="330" cy="320" r="2" fill-opacity="0.5"/>
+    </g>
+  </svg>
+  <div class="wrap band-pad">
+    <div class="pr-head">
+      <div class="rv" style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px">
+        <span class="tag"><span class="chip">Process</span>How we work</span>
+        <h2 class="h2">From the first conversation<br>to your website launch.</h2>
+      </div>
+      <p class="rv d2" style="margin: 0; max-width: 440px; font-size: 16px; line-height: 1.6; color: #5f6563; text-wrap: pretty">Three clear steps, each with your approval. Scope, price and number of revisions are agreed in writing before work begins.</p>
+    </div>
+
+    <div class="pr-line rv" aria-hidden="true">
+      <div class="pr-node"><i></i><b></b></div>
+      <div class="pr-node"><i></i><b></b></div>
+      <div class="pr-node"><i></i><b class="end"></b></div>
+    </div>
+
+    <ol class="pr-steps">
+      <li class="step rv">
+        <div class="step-top"><span class="step-n">01</span><span class="step-chip">Free</span></div>
+        <h3>Conversation and direction</h3>
+        <p>In the consultation we get to know your business and recommend the right solution. Then we define the audience, goal and key message together.</p>
+        <div class="step-out"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Recommended solution and a written proposal</span></div>
+      </li>
+      <li class="step rv d2">
+        <div class="step-top"><span class="step-n">02</span></div>
+        <h3>Design and development</h3>
+        <p>We confirm the structure and visual direction, then design and build the website. You see and approve every phase before we move on.</p>
+        <div class="step-out"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Design for your approval</span></div>
+      </li>
+      <li class="step rv d3">
+        <div class="step-top"><span class="step-n">03</span></div>
+        <h3>Launch and handover</h3>
+        <p>We check display, speed and forms on every screen, launch the website and hand over all access.</p>
+        <div class="step-out"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>All access details and a short editing guide</span></div>
+      </li>
+    </ol>
+
+    <div class="pr-strip">
+      <div class="pr-item rv">
+        <span class="pr-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
+        <div><strong>Written proposal</strong><span class="s">Scope and price up front</span></div>
+      </div>
+      <div class="pr-item rv d2">
+        <span class="pr-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg></span>
+        <div><strong>You approve every phase</strong><span class="s">The quoted price doesn't change</span></div>
+      </div>
+      <div class="pr-item rv d3">
+        <span class="pr-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+        <div><strong>Content your way</strong><span class="s">Edit it yourself or let us do it</span></div>
+      </div>
+      <a class="btn rv d4" href="#kontakt">Book a consultation<span class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- REZULTAT -->
+<section id="rezultat" class="rez">
+  <div class="wrap band-pad">
+    <div class="rv" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+      <span class="tag"><span class="chip">Results</span>What you get</span>
+      <h2 class="h2">A website that turns<br>visitors into enquiries.</h2>
+      <p class="lead" style="max-width: 480px; text-wrap: pretty">If visitors can't tell what you offer within a few seconds, they leave for a competitor. So we build a clear path from the first search to the first conversation with you.</p>
+    </div>
+
+    <div class="rez-pano rv" role="img" aria-label="The client journey in three steps: a search result, a website with a clear offer and an enquiry form"></div>
+
+    <ol class="rez-steps">
+      <li class="rez-item rv">
+        <div class="shot s1 rez-shot" aria-hidden="true"></div>
+        <span class="rez-num">01</span>
+        <h3>They find you</h3>
+        <p>Essential SEO settings help people who don't know you yet to find you.</p>
+      </li>
+      <li class="rez-item rv d2">
+        <div class="shot s2 rez-shot" aria-hidden="true"></div>
+        <span class="rez-num">02</span>
+        <h3>They understand your offer</h3>
+        <p>A clear structure and message instantly show what you offer and why you.</p>
+      </li>
+      <li class="rez-item rv d3">
+        <div class="shot s3 rez-shot" aria-hidden="true"></div>
+        <span class="rez-num">03</span>
+        <h3>They send an enquiry</h3>
+        <p>A visible call to action and a simple form lead to the first conversation.</p>
+      </li>
+    </ol>
+
+    <div class="rez-note rv">
+      <p class="serif">Your offer is available even when you're not.</p>
+      <a class="rez-link" href="#kontakt">Request a free website review<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ODABRANI PROJEKAT -->
+<section id="projekat" class="pj">
+  <div class="wrap band-pad">
+    <div class="pr-head">
+      <div class="rv" style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px">
+        <span class="tag dark"><span class="chip">Project</span>Selected work</span>
+        <h2 class="h2" style="color: #ffffff">Ultracut Solution.<br>A precise website for a precise industry.</h2>
+      </div>
+      <p class="rv d2" style="margin: 0; max-width: 440px; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.74); text-wrap: pretty">A bilingual website for a distributor of YG-1 cutting tools: complete content, catalogues and product videos, adapted to every screen.</p>
+    </div>
+
+    <figure class="pj-frame rv">
+      <video data-proj-video="true" src="assets/e741e9d636c7e868b13434a6f9c92969.mp4" poster="assets/c0305c68d54920fb975dc4b3b94ec9a5.jpg" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" preload="auto" aria-label="Video of the Ultracut Solution website on desktop and mobile"></video>
+      <div class="pj-ctrl">
+        <button class="pj-btn" type="button" aria-label="Play video">
+          <span data-if="projPaused"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+          <span data-if="projPlaying"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></span>
+        </button>
+        <button class="pj-btn" type="button" aria-label="Show video full screen">
+          <span data-if="projSmall"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></span>
+          <span data-if="projBig"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3"/></svg></span>
+        </button>
+      </div>
+    </figure>
+
+    <dl class="pj-stats rv">
+      <div><dt data-count="80">80</dt><dd>pages in two languages</dd></div>
+      <div><dt data-count="209">209</dt><dd>photos on the website</dd></div>
+      <div><dt data-count="13">13</dt><dd>PDF catalogues</dd></div>
+      <div><dt data-count="26">26</dt><dd>products with videos</dd></div>
+    </dl>
+
+    <div class="pj-foot rv">
+      <ul class="pj-chips" aria-label="What we did">
+        <li>Web design</li>
+        <li>Built in Elementor</li>
+        <li>Bilingual content</li>
+        <li>SEO essentials</li>
+        <li>Mobile layout</li>
+      </ul>
+      <a class="btn light" href="#kontakt">Let's talk about your website<span class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- TEHNIČKA IZRADA -->
+<section id="tehnika" class="tech">
+  <div class="wrap band-pad">
+    <div class="tech-grid">
+      <div class="tech-head rv">
+        <span class="tag"><span class="chip">Build</span>Technical foundation</span>
+        <h2 class="h2">Fast, clear and ready for every screen.</h2>
+        <p class="lead" style="max-width: 400px; text-wrap: pretty">Visitors don't notice this until it's missing. A website that loads slowly or breaks on a phone loses enquiries. Ours loads fast, is easy to use and works on every device.</p>
+      </div>
+      <ul class="tech-list rv d2">
+        <li>
+          <span class="ic tk"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1b4d49" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="14" height="11" rx="2"/><path d="M6 19h6"/><rect x="16" y="8" width="6" height="12" rx="1.5" fill="#f0532c" stroke="#f0532c"/><path d="M18.5 17.5h1" stroke="#fff"/></svg>
+</span>
+          <div><h3>Responsive on every screen</h3><p>Checked on phone, tablet and desktop.</p></div>
+        </li>
+        <li>
+          <span class="ic tk"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1b4d49" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="#f0532c" stroke="#f0532c"/><path d="M2 20h4M1 16h2"/></svg>
+</span>
+          <div><h3>Fast loading</h3><p>Optimised images and code, no waiting.</p></div>
+        </li>
+        <li>
+          <span class="ic tk"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1b4d49" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.8-4.8"/><path d="M7.5 12l2-2.5 1.8 1.6 2.2-3" stroke="#f0532c" stroke-width="1.8"/></svg>
+</span>
+          <div><h3>Technical SEO foundation</h3><p>A structure search engines easily understand.</p></div>
+        </li>
+        <li>
+          <span class="ic tk"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1b4d49" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="#f0532c" stroke="#f0532c"/><circle cx="12" cy="12" r="1" fill="#fff" stroke="none"/></svg>
+</span>
+          <div><h3>Clear navigation</h3><p>Readable text and simple navigation.</p></div>
+        </li>
+        <li>
+          <span class="ic tk"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1b4d49" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#f0532c" stroke-width="2"/></svg>
+</span>
+          <div><h3>Pre-launch testing</h3><p>We test display, links and the contact form.</p></div>
+        </li>
+        <li>
+          <span class="ic tk"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1b4d49" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 1 1-2.5-6"/><path d="M20.5 3.5V8H16" stroke="#f0532c" stroke-width="2"/><circle cx="12" cy="12" r="2.5" fill="#f0532c" stroke="none"/></svg>
+</span>
+          <div><h3>Post-launch support</h3><p>Maintenance and changes as agreed.</p></div>
+        </li>
+      </ul>
+    </div>
+    <figure class="tstage rv">
+      <div class="ts-photo"><img src="assets/caeab1d981142e0567aaf1b814a98ab5.webp" alt="The Netify website open on a laptop and a phone on a desk" width="2400" height="1200" loading="lazy" decoding="async"></div>
+      <figcaption class="ts-cap">The same content tailored to every screen.</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- PAKETI (privremene kartice) -->
+<section id="paketi" class="pk">
+  <div class="wrap band-pad">
+    <div class="rv" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+      <span class="tag"><span class="chip">Packages</span>Pricing</span>
+      <h2 class="h2">Choose the package that<br>fits your business.</h2>
+      <p class="lead" style="max-width: 480px; text-wrap: pretty">Our prices are public and one-off. The exact scope is confirmed in a written proposal after a free consultation.</p>
+    </div>
+
+    <div class="pk-grid rv d2">
+      <article class="pk-card">
+        <div class="pk-top"><div><span class="pk-eyebrow">For one service or campaign</span><h3>Start</h3></div></div>
+        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€190</span><span class="pk-unit">one-off</span></div>
+        <p class="pk-desc">One page that clearly presents one offer.</p>
+        <ul class="pk-list">
+          <li>Landing page with up to 5 sections</li>
+          <li>Optimised for phone and tablet</li>
+          <li>Website in two languages</li>
+          <li>Contact form</li>
+          <li>Essential SEO settings</li>
+          <li>Submission to Google search</li>
+        </ul>
+        <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Delivery: 3–5 days</span></div>
+        <a class="ghost pk-cta" href="#kontakt">Request a quote</a>
+      </article>
+      <article class="pk-card pk-feat">
+        <div class="pk-top"><div><span class="pk-eyebrow">For companies and service businesses</span><h3>Business</h3></div><span class="pk-badge">Recommended</span></div>
+        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€490</span><span class="pk-unit">one-off</span></div>
+        <p class="pk-desc">A complete company website you edit yourself, or we do it for you.</p>
+        <ul class="pk-list">
+          <li>Up to 10 pages</li>
+          <li>Design tailored to your brand</li>
+          <li>Website in two languages</li>
+          <li>Edit content yourself</li>
+          <li>SEO settings and Google Analytics</li>
+          <li>Search engine submission and Search Console</li>
+        </ul>
+        <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Delivery: 2–3 weeks</span></div>
+        <a class="btn light pk-cta" href="#kontakt">Request a quote<span class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </article>
+      <article class="pk-card">
+        <div class="pk-top"><div><span class="pk-eyebrow">For growing brands</span><h3>Premium</h3></div></div>
+        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€990</span><span class="pk-unit">one-off</span></div>
+        <p class="pk-desc">For businesses that publish regularly and work in several markets.</p>
+        <ul class="pk-list">
+          <li>Up to 20 pages</li>
+          <li>Custom design</li>
+          <li>Website in three languages</li>
+          <li>Blog with categories</li>
+          <li>Advanced SEO and sitemap</li>
+          <li>Search engine submission and visit tracking</li>
+        </ul>
+        <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Delivery: 3–5 weeks</span></div>
+        <a class="ghost pk-cta" href="#kontakt">Request a quote</a>
+      </article>
+      <article class="pk-card">
+        <div class="pk-top"><div><span class="pk-eyebrow">For larger, demanding projects</span><h3>Custom</h3></div></div>
+        <div class="pk-price"><span class="pk-amount">On request</span></div>
+        <p class="pk-desc">For websites with custom features and integrations with other systems.</p>
+        <ul class="pk-list">
+          <li>Structure and content planning</li>
+          <li>Unique design</li>
+          <li>Languages as needed</li>
+          <li>Advanced features and integrations</li>
+          <li>Advanced SEO and search engine submission</li>
+          <li>Scope and support as agreed</li>
+        </ul>
+        <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Delivery: as agreed</span></div>
+        <a class="ghost pk-cta" href="#kontakt">Let's talk about your project</a>
+      </article>
+    </div>
+
+    <div class="pk-note rv">
+      <p>Development prices are one-off. Domain, hosting and maintenance are charged separately.<br>We take on a limited number of projects at a time so each one gets our full attention.</p>
+      <a class="rez-link" href="#kontakt">Not sure which package? Ask us<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT (tamna CTA kartica) -->
+<section id="kontakt" class="kt">
+  <svg class="kt-deco" viewBox="0 0 640 420" aria-hidden="true">
+    <g stroke="#ffffff" stroke-opacity="0.16" stroke-width="1" fill="none">
+      <path d="M40 300L110 230L180 280L330 320L450 300L560 260L590 120L520 180L420 140L470 60M110 230L150 160L250 190L180 280M250 190L300 110L420 140L360 210L250 190M360 210L330 320M450 300L520 180M560 260L520 180"/>
+    </g>
+    <g fill="#ffffff">
+      <circle cx="40" cy="300" r="2" fill-opacity="0.5"/><circle cx="110" cy="230" r="2.5" fill-opacity="0.7"/><circle cx="180" cy="280" r="2" fill-opacity="0.5"/><circle cx="150" cy="160" r="2" fill-opacity="0.6"/><circle cx="250" cy="190" r="3" fill-opacity="0.8"/><circle cx="300" cy="110" r="2" fill-opacity="0.5"/><circle cx="360" cy="210" r="2.5" fill-opacity="0.7"/><circle cx="420" cy="140" r="3" fill-opacity="0.8"/><circle cx="470" cy="60" r="2" fill-opacity="0.5"/><circle cx="520" cy="180" r="2.5" fill-opacity="0.7"/><circle cx="590" cy="120" r="2" fill-opacity="0.5"/><circle cx="560" cy="260" r="2" fill-opacity="0.6"/><circle cx="450" cy="300" r="2.5" fill-opacity="0.7"/><circle cx="330" cy="320" r="2" fill-opacity="0.5"/>
+    </g>
+  </svg>
+  <div class="wrap band-pad">
+    <div class="cta">
+      <div class="rv" style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px">
+        <span class="tag dark"><span class="chip">Contact</span>Next step</span>
+        <h2 class="h2" style="color: #ffffff">Let's start with<br>a conversation.</h2>
+        <p style="margin: 0; max-width: 400px; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.76); text-wrap: pretty">The consultation is free and without obligation. Send an enquiry or give us a call. We reply within one working day to arrange a time.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px">
+          <a class="btn light" href="#forma">Send an enquiry<span class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a class="ghost dark" href="tel:+38163489978" style="min-height: 50px">+381 63 489 978</a>
+        </div>
+      </div>
+      <form id="forma" class="kt-form rv d2" method="post" aria-label="Consultation enquiry">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #f0532c"></span><span style="font-size: 16px; font-weight: 600">Consultation enquiry</span></div>
+        <div class="field"><label for="k-ime">Full name *</label><input id="k-ime" name="ime" type="text" required maxlength="100" autocomplete="name" placeholder="Your name"></div>
+        <div class="field"><label for="k-mail">Email *</label><input id="k-mail" name="email" type="email" required maxlength="254" autocomplete="email" placeholder="name@company.com"></div>
+        <div class="field"><label for="k-tel">Phone</label><input id="k-tel" name="telefon" type="tel" maxlength="30" autocomplete="tel" placeholder="+381"></div>
+        <div class="field"><label for="k-poruka">Message</label><textarea id="k-poruka" name="poruka" rows="3" maxlength="2000" placeholder="What kind of website do you need?" style="resize: vertical"></textarea></div>
+        <button class="btn" type="submit" style="align-self: flex-start; margin-top: 8px">Send an enquiry<span class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+        <p class="kt-note">No obligation. We use your details only to reply to your enquiry.</p>
+        <span data-if="formSent"><p class="kt-note" role="status">Form sending will be enabled when the site goes live. Until then, call us: <a href="tel:+38163489978">+381 63 489 978</a>.</p></span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- PODNOŽJE -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <a class="ft-logo" href="#vrh" aria-label="Netify Studio — back to top"><svg viewBox="280 340 905 380" role="img" aria-label="Netify Studio" style="height: 40px; width: auto; display: block"><g fill="currentColor" fill-rule="evenodd"><path d="M294 361 H362 C365 361 367 363 370 367 L509 553 V397 C509 373 499 363 475 363 V361 H547 V363 C521 363 513 375 513 398 V606 H499 C495 606 493 605 490 601 L330 386 V548 C330 584 344 603 377 604 V606 H284 V604 C315 602 327 584 327 548 V380 C317 367 309 363 294 363 Z"/><path d="M568 510 C566 572 584 600 622 600 C654 600 680 583 692 558 L695 558 C684 590 658 609 616 609 C563 609 530 577 530 530 C530 480 570 440 616 440 C662 440 696 468 696 510 Z M569 507 H659 C660 466 646 442 616 442 C590 442 574 466 569 507 Z"/><path d="M693 442 C721 439 745 414 751 388 H753 V441 H800 V444 H753 V570 C753 591 759 601 775 601 C787 601 799 594 807 583 L810 584 C800 600 785 609 765 609 C734 609 718 592 718 566 V444 H693 Z"/><path d="M811 451 C827 447 843 443 858 438 V571 C858 597 863 604 883 604 V606 H810 V604 C824 600 824 590 824 571 V480 C824 463 822 456 811 454 Z M861 393 C861 405 852 415 840 415 C828 415 818 405 818 393 C818 381 828 372 840 372 C852 372 861 381 861 393 Z"/><path d="M882 441 H907 V429 C907 380 946 345 990 345 C1014 345 1032 352 1032 367 C1032 379 1025 386 1014 386 C1003 386 997 377 997 366 C997 362 999 355 996 352 C993 349 988 348 983 349 C951 349 944 381 944 415 V441 H982 V444 H944 V570 C944 597 949 604 968 604 V606 H880 V604 C901 604 907 596 907 570 V444 H882 Z"/><path d="M973 441 H1058 V444 C1040 444 1036 454 1044 473 L1091 573 L1135 476 C1146 452 1135 444 1111 444 V441 H1180 V444 C1160 445 1149 460 1139 481 L1080 612 C1057 665 1045 700 1005 700 C991 700 984 692 984 681 C984 670 993 660 1004 660 C1015 660 1023 668 1023 680 C1023 685 1021 690 1018 694 C1041 691 1055 667 1073 618 L1000 463 C994 449 988 444 973 444 Z"/><path d="M479 713 V700 H480 C482 708 486 713 493 713 C500 713 504 709 504 703 C504 697 499 695 492 692 C484 689 479 687 479 680 C479 674 485 671 492 671 C498 671 502 672 506 674 V684 H504 C503 677 499 673 493 673 C487 673 484 676 484 680 C484 685 488 687 495 689 C503 692 508 695 508 702 C508 710 502 715 493 715 C487 715 484 712 481 712 L480 714 Z"/><path d="M563 673 H600 L601 683 H599 C598 676 595 674 587 674 V709 C587 713 588 713 592 713 V714 H574 V713 C579 713 580 713 580 709 V674 C571 674 566 676 565 683 H563 Z"/><path d="M654 673 H671 V674 C667 674 666 675 666 678 V700 C666 709 670 713 677 713 C685 713 689 708 689 700 V679 C689 675 688 674 684 674 V673 H696 V674 C692 674 692 675 692 679 V700 C692 710 686 715 676 715 C665 715 659 710 659 700 V678 C659 675 658 674 654 674 Z"/><path d="M746 673 H763 C777 673 784 681 784 693 C784 706 777 714 763 714 H746 V713 C750 713 751 712 751 709 V678 C751 675 750 674 746 674 Z M757 675 V711 C757 712 759 712 762 712 C772 712 777 705 777 693 C777 681 772 675 762 675 Z"/><path d="M839 673 H854 V674 C850 674 850 675 850 678 V709 C850 712 850 713 854 713 V714 H839 V713 C843 713 844 712 844 709 V678 C844 675 843 674 839 674 Z"/><path d="M926 671 C938 671 946 680 946 693 C946 706 938 715 926 715 C914 715 906 706 906 693 C906 680 914 671 926 671 Z M926 673 C917 673 913 680 913 693 C913 706 917 713 926 713 C935 713 939 706 939 693 C939 680 935 673 926 673 Z"/></g></svg></a>
+        <p>Web design and development for websites that look serious and bring in enquiries.</p>
+        <div class="ft-social">
+          <a class="soc-ig" href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a class="soc-li" href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11.25H3zM9.5 9.75h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.6 4.78 6V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.95 1.32-1.95 2.69V21h-4z"/></svg></a>
+          <a class="soc-fb" href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46h1.55V4.47A20 20 0 0 0 14.3 4.3c-2.2 0-3.7 1.34-3.7 3.8v2.4H8.1v3h2.5V21z"/></svg></a>
+        </div>
+      </div>
+      <nav class="ft-col" aria-label="Services">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="#usluge">Landing page</a></li>
+          <li><a href="#usluge">Business website</a></li>
+          <li><a href="#usluge">Portfolio website</a></li>
+          <li><a href="#usluge">Website maintenance</a></li>
+        </ul>
+      </nav>
+      <nav class="ft-col" aria-label="Studio">
+        <h2>Studio</h2>
+        <ul>
+          <li><a href="#pristup">How we work</a></li>
+          <li><a href="#rezultat">What you get</a></li>
+          <li><a href="#projekat">Selected project</a></li>
+          <li><a href="#paketi">Packages</a></li>
+        </ul>
+      </nav>
+      <div class="ft-col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="tel:+38163489978"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+381 63 489 978</a></li>
+          <li><a href="#forma"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Send an enquiry</a></li>
+        </ul>
+        <a class="btn light sm ft-cta" href="#kontakt">Book a consultation<span class="dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© 2026 Netify Studio. All rights reserved.</span>
+      <a class="ft-up" href="#vrh">Back to top<span aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></a>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script src="assets/site.js"></script></body>
+</html>
