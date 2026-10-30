@@ -321,7 +321,7 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
 .field textarea{resize:vertical}
 .field input:hover,.field textarea:hover{border-bottom-color:var(--ink)}
 .field input:focus,.field textarea:focus{outline:none;background:#fff;border-color:var(--or);box-shadow:0 0 0 4px rgba(240,83,44,.14)}
-.kt-note{margin:0;font-size:14px;line-height:1.5;color:var(--mut)}
+.kt-note{margin:0;font-size:14px;line-height:1.5;color:var(--mut);max-width:480px}
 .kt-note a{color:var(--ink);font-weight:600;padding:13px 0;white-space:nowrap}
 
 /* podnožje */
@@ -447,6 +447,16 @@ html.nsc-on.nsc-vis .nsc-dot,html.nsc-on.nsc-vis .nsc-ring{opacity:1}
 html.nsc-lk .nsc-ring{scale:1.556;background-color:rgba(240,83,44,.12);border-color:rgba(240,83,44,.9)}
 html.nsc-lk .nsc-dot{scale:.5}
 html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
+/* obostrano poravnat tekst samo u širokim blokovima (60–75 znakova u redu), bez rastavljanja reči; samo računar */
+@media (min-width:1200px){
+  .ns :is(.fq-list p,.sx-p,.kt-text p:not(.ey),.pk-note p){text-align:justify;-webkit-hyphens:manual;hyphens:manual;text-wrap:pretty}
+}
+/* prelomi (30.10.): podaci o projektu — šira kolona „Uradili smo“, uža „Jezici“; napomena ispod paketa — svaka rečenica u jednom redu */
+@media (min-width:1200px){
+  .ns .pj-meta{grid-template-columns:minmax(0,1fr) minmax(0,.9fr) minmax(0,1.25fr)}
+  .ns .pk-note p{max-width:680px}
+}
+.ns .pj-intro .lead{text-wrap:balance}
 </style>
 </head>
 <body>
@@ -499,7 +509,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
   <div class="wrap hero-in">
     <p class="ey in"><span>Web design and development</span><i aria-hidden="true"></i></p>
     <h1 class="dh in d1">A website that turns<em>visitors into enquiries.</em></h1>
-    <p class="hero-p in d2">For businesses that take their work seriously and want every visitor to see it. From the first conversation to launch, with the price and scope agreed up front.</p>
+    <p class="hero-p in d2">For businesses that take their work seriously and want every visitor to see it.<br>From the first conversation to launch, with the price and scope agreed up front.</p>
     <div class="acts in d3">
       <a class="b" href="#kontakt">Book a consultation<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       <a class="tlink" href="tel:+38163489978">+381 63 489 978<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
@@ -529,7 +539,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
   <div class="wrap pad">
     <div class="sh">
       <div class="rv"><p class="ey">Selected work</p><h2 class="dh">Ultracut Solution.<em>A precise website for a precise industry.</em></h2></div>
-      <div class="pj-intro rv d2"><p class="lead">A distributor of YG-1 cutting tools needed a website where buyers quickly find the right tool, catalogue or video, in Serbian and English. We built it from scratch: content, design and development.</p><a class="tlink" href="https://ultracutsolution.com" target="_blank" rel="noopener">Visit the website<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
+      <div class="pj-intro rv d2"><p class="lead">A distributor of YG-1 cutting tools needed a website where buyers quickly find the right tool, catalogue or video, in&nbsp;Serbian and&nbsp;English.<br>We built it from scratch: content,&nbsp;design and&nbsp;development.<br>We also designed the logo, letterhead and business&nbsp;card, so people recognise the company at a&nbsp;glance.</p><a class="tlink" href="https://ultracutsolution.com" target="_blank" rel="noopener">Visit the website<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
     </div>
     <div class="pj-stage rv">
       <figure class="pj-card">
@@ -551,7 +561,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
           <dl class="pj-meta">
             <div><dt>Industry</dt><dd>Distribution of YG-1 cutting tools</dd></div>
             <div><dt>Languages</dt><dd>Serbian and English</dd></div>
-            <div><dt>What we did</dt><dd>Content, design, Elementor build, SEO essentials</dd></div>
+            <div><dt>What we did</dt><dd>Content, design, Elementor&nbsp;build, SEO&nbsp;basics</dd></div>
           </dl>
         </figcaption>
       </figure>
@@ -612,7 +622,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
     <div class="sx">
       <ul class="sx-list">
         <li><a class="sx-row" href="#paketi"><span class="sx-img" aria-hidden="true"><img src="assets/51d0f6d8ffd409457838685e6132c8e2.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"></span><span class="sx-t"><b>Landing page</b><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="sx-p">For a single offer, campaign or service that needs a clear path to enquiries.</span></a></li>
-        <li><a class="sx-row" href="#paketi"><span class="sx-img" aria-hidden="true"><img src="assets/798e5210e34f25ec2b98215a8c3921ef.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"></span><span class="sx-t"><b>Business website</b><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="sx-p">For a business with several services, in one or two languages, so customers understand the offer before the first call.</span></a></li>
+        <li><a class="sx-row" href="#paketi"><span class="sx-img" aria-hidden="true"><img src="assets/798e5210e34f25ec2b98215a8c3921ef.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"></span><span class="sx-t"><b>Business website</b><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="sx-p">For a multi-service company, in one or two languages, so customers understand the offer before the first call.</span></a></li>
         <li><a class="sx-row" href="#paketi"><span class="sx-img" aria-hidden="true"><img src="assets/229b923de8767749f036d70acb855748.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"></span><span class="sx-t"><b>Portfolio website</b><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="sx-p">For anyone who wants to show their work and win new clients with it.</span></a></li>
         <li><a class="sx-row" href="#kontakt"><span class="sx-img" aria-hidden="true"><img src="assets/aa6789c19161ac94631b97765291bec8.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"></span><span class="sx-t"><b>Website maintenance</b><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="sx-p">For an existing website that needs fixing or regular updates, when you don't have the time.</span></a></li>
       </ul>
@@ -691,7 +701,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
       </article>
       <article class="pk-card pk-feat">
         <div class="pk-top"><div><span class="pk-eyebrow">For companies and service businesses</span><h3>Business</h3></div><span class="pk-badge">Recommended</span></div>
-        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€1,390</span><span class="pk-unit">one-off</span></div>
+        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€1,490</span><span class="pk-unit">one-off</span></div>
         <p class="pk-desc">A complete company website you edit yourself, or we do it for you.</p>
         <ul class="pk-list"><li>Up to 10 pages</li><li>Design tailored to your brand</li><li>Website in two languages</li><li>Edit content yourself</li><li>SEO settings and Google Analytics</li><li>Search engine submission and Search Console</li></ul>
         <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Delivery: 2–3 weeks</span></div>
@@ -699,7 +709,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
       </article>
       <article class="pk-card">
         <div class="pk-top"><div><span class="pk-eyebrow">For businesses in several markets</span><h3>Premium</h3></div></div>
-        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€2,490</span><span class="pk-unit">one-off</span></div>
+        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€2,590</span><span class="pk-unit">one-off</span></div>
         <p class="pk-desc">For businesses that publish regularly and work in several markets.</p>
         <ul class="pk-list"><li>Up to 20 pages</li><li>Custom design</li><li>Website in three languages</li><li>Blog with categories</li><li>Advanced SEO and sitemap</li><li>Search engine submission and visit tracking</li></ul>
         <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Delivery: 3–5 weeks</span></div>
@@ -732,7 +742,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
         <a class="more" href="#kontakt">Ask a question<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="fq-list rv d2">
-        <details open><summary>How much does a website cost?<span class="pm" aria-hidden="true"></span></summary><p>A landing page starts at €590, a business website at €1,390 and a website with a blog in three languages at €2,490. You get the exact price in writing after a free consultation, and it doesn't change afterwards.</p></details>
+        <details open><summary>How much does a website cost?<span class="pm" aria-hidden="true"></span></summary><p>A landing page starts at €590, a business website at €1,490 and a website with a blog in three languages at €2,590. You get the exact price in writing after a free consultation, and it doesn't change afterwards.</p></details>
         <details><summary>How long does it take?<span class="pm" aria-hidden="true"></span></summary><p>A landing page takes 1–2 weeks, a business website 2–3 weeks and a larger website 3–5 weeks. The timeline also depends on when we receive texts and photos.</p></details>
         <details><summary>Why do you cost more than offers in ads?<span class="pm" aria-hidden="true"></span></summary><p>For a simple business-card website, a cheaper offer may be enough. Our price includes a conversation about your business, a content plan, design and testing on every screen. Work out what one new client is worth to you, because a website should bring them in for years.</p></details>
         <details><summary>Can I edit the content myself?<span class="pm" aria-hidden="true"></span></summary><p>Yes, if you want to. In that case we build the website in WordPress and Elementor, and you get a short editing guide. If you leave the updates to us, we build it with modern technologies such as Astro, Next.js and React. Such a website loads faster, and we make all the changes.</p></details>
@@ -752,7 +762,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
         <p class="ey"><span>Next step</span><i aria-hidden="true"></i></p>
         <h2 class="dh">Let's start with<em>a conversation.</em></h2>
         <p>The consultation is free and without obligation. Send an enquiry or give us a call. We reply within one working day to arrange a time.</p>
-        <p class="kt-next">After the conversation you'll know what kind of website you need, what content to prepare and what the next step is.</p>
+        <p class="kt-next">After the conversation, you'll know which website you need, what content to prepare and what comes next.</p>
         <a class="tlink" href="tel:+38163489978">Or call: +381 63 489 978<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </div>
       <form id="forma" class="kt-form rv d2" method="post" aria-label="Consultation enquiry">
@@ -762,7 +772,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
         <div class="field"><label for="k-tel">Phone</label><input id="k-tel" name="telefon" type="tel" maxlength="30" autocomplete="tel" placeholder="+381"></div>
         <div class="field"><label for="k-poruka">Message</label><textarea id="k-poruka" name="poruka" rows="3" maxlength="2000" placeholder="What kind of website do you need?"></textarea></div>
         <button class="b" type="submit" style="align-self: flex-start; margin-top: 8px">Send an enquiry<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></button>
-        <p class="kt-note">No obligation. We use your details only to reply to your enquiry. More in our <a href="privacy-policy.html">privacy policy</a>.</p>
+        <p class="kt-note">No obligation. We use your details only to reply to your enquiry. <br>More in our <a href="privacy-policy.html">privacy policy</a>.</p>
         <span data-if="formSent"><p class="kt-note" role="status">Form sending will be enabled when the site goes live. Until then, call us: <a href="tel:+38163489978">+381 63 489 978</a>.</p></span>
       </form>
     </div>
