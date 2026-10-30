@@ -253,11 +253,11 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
 /* paketi */
 .pk{background:var(--mist)}
 .pk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.pk-card{display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:0;padding:32px 24px;background:#fff;border:1px solid var(--line)}
+.pk-card{position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-row:span 7;grid-template-rows:subgrid;row-gap:0;padding:32px 24px;background:#fff;border:1px solid var(--line)}
 .pk-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:16px}
-.pk-eyebrow{display:block;margin-bottom:8px;font-size:12px;font-weight:600;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;color:var(--ort)}
-.pk-top h3{margin:0;font-size:24px;font-weight:800;line-height:1;letter-spacing:-.03em;text-transform:uppercase}
-.pk-badge{padding:4px 12px;background:var(--ord);color:#fff;font-size:12px;font-weight:600;letter-spacing:.06em;white-space:nowrap}
+.pk-eyebrow{display:block;align-self:start;margin-bottom:8px;font-size:12px;font-weight:600;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;color:var(--ort)}
+.pk-name{margin:0 0 16px;font-size:24px;font-weight:800;line-height:1;letter-spacing:-.03em;text-transform:uppercase}
+.pk-badge{position:absolute;top:0;right:24px;transform:translateY(-50%);padding:4px 12px;background:var(--ord);color:#fff;font-size:12px;font-weight:600;letter-spacing:.06em;white-space:nowrap}
 .pk-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin-bottom:8px}
 .pk-from{font-size:14px;color:var(--mut)}
 .pk-amount{white-space:nowrap;font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:48px;font-weight:400;line-height:1;letter-spacing:-.02em;color:var(--ink)}
@@ -266,9 +266,10 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
 .pk-list{display:flex;flex-direction:column;gap:12px;margin:0 0 24px;padding:24px 0 0;list-style:none;border-top:1px solid var(--line);font-size:14px;line-height:1.5;color:#3a4442}
 .pk-list li{position:relative;padding-left:24px}
 .pk-list li::before{content:"";position:absolute;left:2px;top:5px;width:10px;height:6px;border-left:2px solid var(--or);border-bottom:2px solid var(--or);transform:rotate(-45deg)}
-.pk-time{display:flex;align-items:center;gap:8px;margin-bottom:24px;padding:12px 16px;background:var(--mist);font-size:14px;font-weight:600;color:var(--ink);align-self:start}
+.pk-time{display:flex;align-items:center;gap:8px;margin-bottom:24px;padding:12px;background:var(--mist);font-size:14px;font-weight:600;color:var(--ink);align-self:start}
 .pk-time svg{flex:none;color:var(--or)}
 .pk-cta{align-self:end;justify-self:start}
+.pk-card .b.pk-cta{max-width:100%;padding-left:16px;padding-right:16px}
 .pk-feat{background:var(--ink);border-color:var(--ink);color:#fff}
 .pk-feat .pk-eyebrow{color:#ffbba3}
 .pk-feat .pk-from,.pk-feat .pk-unit,.pk-feat .pk-desc{color:rgba(255,255,255,.72)}
@@ -694,31 +695,36 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
     </div>
     <div class="pk-grid rv">
       <article class="pk-card">
-        <div class="pk-top"><div><span class="pk-eyebrow">For one service or campaign</span><h3>Start</h3></div></div>
-        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€590</span><span class="pk-unit">one-off</span></div>
+        <span class="pk-eyebrow">For one service or campaign</span>
+        <h3 class="pk-name">Start</h3>
+        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€690</span><span class="pk-unit">one-off</span></div>
         <p class="pk-desc">One page that clearly presents one offer.</p>
         <ul class="pk-list"><li>Landing page with up to 5 sections</li><li>Optimised for phone and tablet</li><li>Website in two languages</li><li>Contact form</li><li>Essential SEO settings</li><li>Submission to Google search</li></ul>
         <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Delivery: 1–2 weeks</span></div>
         <a class="more pk-cta" href="#kontakt">Request a quote<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
       <article class="pk-card pk-feat">
-        <div class="pk-top"><div><span class="pk-eyebrow">For companies and service businesses</span><h3>Business</h3></div><span class="pk-badge">Recommended</span></div>
-        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€1,490</span><span class="pk-unit">one-off</span></div>
+        <span class="pk-badge">Recommended</span>
+        <span class="pk-eyebrow">For companies and service businesses</span>
+        <h3 class="pk-name">Business</h3>
+        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€1,790</span><span class="pk-unit">one-off</span></div>
         <p class="pk-desc">A complete company website you edit yourself, or we do it for you.</p>
         <ul class="pk-list"><li>Up to 10 pages</li><li>Design tailored to your brand</li><li>Website in two languages</li><li>Edit content yourself</li><li>SEO settings and Google Analytics</li><li>Search engine submission and Search Console</li></ul>
         <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Delivery: 2–3 weeks</span></div>
         <a class="b pk-cta" href="#kontakt">Request a quote<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </article>
       <article class="pk-card">
-        <div class="pk-top"><div><span class="pk-eyebrow">For businesses in several markets</span><h3>Premium</h3></div></div>
-        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€2,590</span><span class="pk-unit">one-off</span></div>
+        <span class="pk-eyebrow">For businesses in several markets</span>
+        <h3 class="pk-name">Premium</h3>
+        <div class="pk-price"><span class="pk-from">from</span><span class="pk-amount">€2,990</span><span class="pk-unit">one-off</span></div>
         <p class="pk-desc">For businesses that publish regularly and work in several markets.</p>
         <ul class="pk-list"><li>Up to 20 pages</li><li>Custom design</li><li>Website in three languages</li><li>Blog with categories</li><li>Advanced SEO and sitemap</li><li>Search engine submission and visit tracking</li></ul>
         <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Delivery: 3–5 weeks</span></div>
         <a class="more pk-cta" href="#kontakt">Request a quote<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
       <article class="pk-card">
-        <div class="pk-top"><div><span class="pk-eyebrow">For larger, demanding projects</span><h3>Custom</h3></div></div>
+        <span class="pk-eyebrow">For larger, demanding projects</span>
+        <h3 class="pk-name">Custom</h3>
         <div class="pk-price"><span class="pk-amount">On request</span></div>
         <p class="pk-desc">For websites with custom features and integrations with other systems.</p>
         <ul class="pk-list"><li>Structure and content planning</li><li>Unique design</li><li>Languages as needed</li><li>Advanced features and integrations</li><li>Advanced SEO and search engine submission</li><li>Scope and support as agreed</li></ul>
@@ -744,7 +750,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
         <a class="more" href="#kontakt">Ask a question<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="fq-list rv d2">
-        <details open><summary>How much does a website cost?<span class="pm" aria-hidden="true"></span></summary><p>A landing page starts at €590, a business website at €1,490 and a website with a blog in three languages at €2,590. You get the exact price in writing after a free consultation, and it doesn't change afterwards.</p></details>
+        <details open><summary>How much does a website cost?<span class="pm" aria-hidden="true"></span></summary><p>A landing page starts at €690, a business website at €1,790 and a website with a blog in three languages at €2,990. You get the exact price in writing after a free consultation, and it doesn't change afterwards.</p></details>
         <details><summary>How long does it take?<span class="pm" aria-hidden="true"></span></summary><p>A landing page takes 1–2 weeks, a business website 2–3 weeks and a larger website 3–5 weeks. The timeline also depends on when we receive texts and photos.</p></details>
         <details><summary>Why do you cost more than offers in ads?<span class="pm" aria-hidden="true"></span></summary><p>For a simple business-card website, a cheaper offer may be enough. Our price includes a conversation about your business, a content plan, design and testing on every screen. Work out what one new client is worth to you, because a website should bring them in for years.</p></details>
         <details><summary>Can I edit the content myself?<span class="pm" aria-hidden="true"></span></summary><p>Yes, if you want to. In that case we build the website in WordPress and Elementor, and you get a short editing guide. If you leave the updates to us, we build it with modern technologies such as Astro, Next.js and React. Such a website loads faster, and we make all the changes.</p></details>

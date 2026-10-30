@@ -253,11 +253,11 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
 /* paketi */
 .pk{background:var(--mist)}
 .pk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.pk-card{display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:0;padding:32px 24px;background:#fff;border:1px solid var(--line)}
+.pk-card{position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-row:span 7;grid-template-rows:subgrid;row-gap:0;padding:32px 24px;background:#fff;border:1px solid var(--line)}
 .pk-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:16px}
-.pk-eyebrow{display:block;margin-bottom:8px;font-size:12px;font-weight:600;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;color:var(--ort)}
-.pk-top h3{margin:0;font-size:24px;font-weight:800;line-height:1;letter-spacing:-.03em;text-transform:uppercase}
-.pk-badge{padding:4px 12px;background:var(--ord);color:#fff;font-size:12px;font-weight:600;letter-spacing:.06em;white-space:nowrap}
+.pk-eyebrow{display:block;align-self:start;margin-bottom:8px;font-size:12px;font-weight:600;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;color:var(--ort)}
+.pk-name{margin:0 0 16px;font-size:24px;font-weight:800;line-height:1;letter-spacing:-.03em;text-transform:uppercase}
+.pk-badge{position:absolute;top:0;right:24px;transform:translateY(-50%);padding:4px 12px;background:var(--ord);color:#fff;font-size:12px;font-weight:600;letter-spacing:.06em;white-space:nowrap}
 .pk-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin-bottom:8px}
 .pk-from{font-size:14px;color:var(--mut)}
 .pk-amount{white-space:nowrap;font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:48px;font-weight:400;line-height:1;letter-spacing:-.02em;color:var(--ink)}
@@ -266,9 +266,10 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
 .pk-list{display:flex;flex-direction:column;gap:12px;margin:0 0 24px;padding:24px 0 0;list-style:none;border-top:1px solid var(--line);font-size:14px;line-height:1.5;color:#3a4442}
 .pk-list li{position:relative;padding-left:24px}
 .pk-list li::before{content:"";position:absolute;left:2px;top:5px;width:10px;height:6px;border-left:2px solid var(--or);border-bottom:2px solid var(--or);transform:rotate(-45deg)}
-.pk-time{display:flex;align-items:center;gap:8px;margin-bottom:24px;padding:12px 16px;background:var(--mist);font-size:14px;font-weight:600;color:var(--ink);align-self:start}
+.pk-time{display:flex;align-items:center;gap:8px;margin-bottom:24px;padding:12px;background:var(--mist);font-size:14px;font-weight:600;color:var(--ink);align-self:start}
 .pk-time svg{flex:none;color:var(--or)}
 .pk-cta{align-self:end;justify-self:start}
+.pk-card .b.pk-cta{max-width:100%;padding-left:16px;padding-right:16px}
 .pk-feat{background:var(--ink);border-color:var(--ink);color:#fff}
 .pk-feat .pk-eyebrow{color:#ffbba3}
 .pk-feat .pk-from,.pk-feat .pk-unit,.pk-feat .pk-desc{color:rgba(255,255,255,.72)}
@@ -694,31 +695,36 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
     </div>
     <div class="pk-grid rv">
       <article class="pk-card">
-        <div class="pk-top"><div><span class="pk-eyebrow">Za jednu uslugu ili kampanju</span><h3>Start</h3></div></div>
-        <div class="pk-price"><span class="pk-from">od</span><span class="pk-amount">590 €</span><span class="pk-unit">jednokratno</span></div>
+        <span class="pk-eyebrow">Za jednu uslugu ili kampanju</span>
+        <h3 class="pk-name">Start</h3>
+        <div class="pk-price"><span class="pk-from">od</span><span class="pk-amount">690 €</span><span class="pk-unit">jednokratno</span></div>
         <p class="pk-desc">Jedna stranica koja jasno predstavlja jednu ponudu.</p>
         <ul class="pk-list"><li>Landing stranica do 5 sekcija</li><li>Prilagođeno telefonu i tabletu</li><li>Sajt na dva jezika</li><li>Kontakt forma</li><li>Osnovna SEO podešavanja</li><li>Prijava na Google pretraživač</li></ul>
         <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Rok izrade: 1–2 nedelje</span></div>
         <a class="more pk-cta" href="#kontakt">Zatražite ponudu<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
       <article class="pk-card pk-feat">
-        <div class="pk-top"><div><span class="pk-eyebrow">Za firme i uslužne delatnosti</span><h3>Biznis</h3></div><span class="pk-badge">Preporučujemo</span></div>
-        <div class="pk-price"><span class="pk-from">od</span><span class="pk-amount">1.490 €</span><span class="pk-unit">jednokratno</span></div>
+        <span class="pk-badge">Preporučujemo</span>
+        <span class="pk-eyebrow">Za firme i uslužne delatnosti</span>
+        <h3 class="pk-name">Biznis</h3>
+        <div class="pk-price"><span class="pk-from">od</span><span class="pk-amount">1.790 €</span><span class="pk-unit">jednokratno</span></div>
         <p class="pk-desc">Ceo sajt firme, koji sami uređujete ili mi za vas.</p>
         <ul class="pk-list"><li>Do 10 stranica</li><li>Dizajn prilagođen brendu</li><li>Sajt na dva jezika</li><li>Samostalna izmena sadržaja</li><li>SEO podešavanja i Google Analytics</li><li>Prijava na pretraživače i Search Console</li></ul>
         <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Rok izrade: 2–3 nedelje</span></div>
         <a class="b pk-cta" href="#kontakt">Zatražite ponudu<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </article>
       <article class="pk-card">
-        <div class="pk-top"><div><span class="pk-eyebrow">Za firme na više tržišta</span><h3>Premium</h3></div></div>
-        <div class="pk-price"><span class="pk-from">od</span><span class="pk-amount">2.590 €</span><span class="pk-unit">jednokratno</span></div>
+        <span class="pk-eyebrow">Za firme na više tržišta</span>
+        <h3 class="pk-name">Premium</h3>
+        <div class="pk-price"><span class="pk-from">od</span><span class="pk-amount">2.990 €</span><span class="pk-unit">jednokratno</span></div>
         <p class="pk-desc">Za firme koje redovno objavljuju sadržaj i rade na više tržišta.</p>
         <ul class="pk-list"><li>Do 20 stranica</li><li>Dizajn po meri</li><li>Sajt na tri jezika</li><li>Blog sa kategorijama</li><li>Napredni SEO i mapa sajta</li><li>Prijava na pretraživače i praćenje posete</li></ul>
         <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Rok izrade: 3–5 nedelja</span></div>
         <a class="more pk-cta" href="#kontakt">Zatražite ponudu<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
       <article class="pk-card">
-        <div class="pk-top"><div><span class="pk-eyebrow">Za veće i zahtevnije projekte</span><h3>Po meri</h3></div></div>
+        <span class="pk-eyebrow">Za veće i zahtevnije projekte</span>
+        <h3 class="pk-name">Po meri</h3>
         <div class="pk-price"><span class="pk-amount">Na upit</span></div>
         <p class="pk-desc">Za sajtove sa posebnim funkcijama i povezivanjem sa drugim sistemima.</p>
         <ul class="pk-list"><li>Planiranje strukture i sadržaja</li><li>Jedinstven dizajn</li><li>Jezici po potrebi</li><li>Napredne funkcionalnosti i integracije</li><li>Napredni SEO i prijava na pretraživače</li><li>Obim i podrška po dogovoru</li></ul>
@@ -744,7 +750,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
         <a class="more" href="#kontakt">Postavite pitanje<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="fq-list rv d2">
-        <details open><summary>Koliko košta izrada sajta?<span class="pm" aria-hidden="true"></span></summary><p>Landing stranica od 590&nbsp;€, poslovni sajt od 1.490&nbsp;€, a sajt sa blogom i tri jezika od 2.590&nbsp;€. Tačnu cenu dobijate pisano posle besplatne konsultacije i ona se posle ne menja.</p></details>
+        <details open><summary>Koliko košta izrada sajta?<span class="pm" aria-hidden="true"></span></summary><p>Landing stranica od 690&nbsp;€, poslovni sajt od 1.790&nbsp;€, a sajt sa blogom i tri jezika od 2.990&nbsp;€. Tačnu cenu dobijate pisano posle besplatne konsultacije i ona se posle ne menja.</p></details>
         <details><summary>Koliko traje izrada?<span class="pm" aria-hidden="true"></span></summary><p>Landing stranica 1–2 nedelje, poslovni sajt 2–3 nedelje, veći sajt 3–5 nedelja. Rok zavisi i od toga kada stignu tekstovi i fotografije.</p></details>
         <details><summary>Zašto ste skuplji od ponuda iz oglasa?<span class="pm" aria-hidden="true"></span></summary><p>Za jednostavnu vizitkartu jeftinija ponuda može biti dovoljna. Naša cena uključuje razgovor o vašem poslu, plan sadržaja, dizajn i proveru na svim ekranima. Izračunajte koliko vam vredi jedan novi klijent, jer sajt treba da ih donosi godinama.</p></details>
         <details><summary>Mogu li sam da menjam sadržaj?<span class="pm" aria-hidden="true"></span></summary><p>Da, ako to želite. Tada sajt pravimo u WordPress-u i Elementoru i dobijate kratko uputstvo za uređivanje. Ako izmene prepustite nama, sajt pravimo u savremenim tehnologijama kao što su Astro, Next.js i React. Takav sajt se brže učitava, a sve izmene radimo mi.</p></details>
