@@ -246,7 +246,7 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
 .pv{position:relative;isolation:isolate;overflow:hidden;background:var(--petrol);color:#fff}
 .pv .net{right:-120px;top:40px;width:700px;opacity:.6}
 .rules{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin:0;padding:0;list-style:none}
-.rules li{display:flex;flex-direction:column;gap:16px;padding:24px 24px 32px;border:1px solid rgba(255,255,255,.18);background:rgba(11,26,26,.28)}
+.rules li{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:16px;align-content:start;padding:24px 24px 32px;border:1px solid rgba(255,255,255,.18);background:rgba(11,26,26,.28)}
 .rules b{font-family:'Newsreader',Georgia,serif;font-style:italic;font-weight:400;font-size:32px;line-height:1;letter-spacing:-.02em;color:var(--or)}
 .rules span{font-size:14px;line-height:1.55;color:rgba(255,255,255,.82);text-wrap:pretty}
 
@@ -457,6 +457,8 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
   .ns .pk-note p{max-width:680px}
 }
 .ns .pj-intro .lead{text-wrap:balance}
+/* naslovi pravila u EN: ravnomerno u dva reda (SR je već dobar, ne dirati) */
+:root:lang(en) .ns .rules b{text-wrap:balance}
 </style>
 </head>
 <body>
@@ -674,9 +676,9 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
       <p class="lead rv d2">They apply to every project, whatever its size.</p>
     </div>
     <ul class="rules rv">
-      <li><b>A fixed price.</b><span>We put the price in writing before we start, and it doesn't change.</span></li>
-      <li><b>Your approval first.</b><span>We don't start designing until you approve the direction.</span></li>
-      <li><b>No lock-in.</b><span>The website is yours: we hand over every login and a guide.</span></li>
+      <li><b>The price won't change.</b><span>We put the price in writing before we start, and it doesn't change.</span></li>
+      <li><b>You approve first.</b><span>We don't start designing until you approve the direction.</span></li>
+      <li><b>Never locked in.</b><span>The website is yours: we hand over every login and a guide.</span></li>
       <li><b>A reply in a day.</b><span>We reply to every enquiry within one working day.</span></li>
       <li><b>Honest from the start.</b><span>If we're not the right fit for your project, we'll tell you straight away.</span></li>
     </ul>
