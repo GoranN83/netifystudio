@@ -108,8 +108,7 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
 /* uvod */
 .hero{position:relative;isolation:isolate;overflow:hidden;background:var(--ink);color:#fff}
 .hero-bg{position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 70% at 78% 42%,rgba(240,83,44,.22),rgba(240,83,44,0) 60%),radial-gradient(70% 80% at 70% 60%,#1b4d49 0%,rgba(27,77,73,0) 70%),linear-gradient(135deg,#123a37 0%,#0b1a1a 70%)}
-.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 50%}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,26,26,.92) 0%,rgba(11,26,26,.72) 38%,rgba(11,26,26,.1) 72%),linear-gradient(0deg,rgba(11,26,26,.85) 0%,rgba(11,26,26,0) 34%)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,26,26,.85) 0%,rgba(11,26,26,.4) 45%,rgba(11,26,26,0) 65%),linear-gradient(0deg,rgba(11,26,26,.9) 0%,rgba(11,26,26,0) 28%)}
 .hero .net{display:none}
 .hero-in{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:clamp(680px,100vh,920px);min-height:clamp(680px,100svh,920px);padding-top:144px;padding-bottom:160px}
 .hero h1{margin:0 0 32px;max-width:900px;font-size:clamp(46px,7.4vw,104px);color:#fff}
@@ -128,7 +127,7 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
 .ticker li+li::before{content:"";width:1px;height:16px;background:rgba(255,255,255,.2)}
 
 /* šta dobijate: kartice koje izranjaju iz fotografije */
-.rz{background:var(--mist)}
+.rz{background:var(--ink);color:#fff}
 .rz-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:stretch}
 .band{position:relative;min-height:480px;overflow:hidden;background:#2a4fc0;clip-path:polygon(0 0,calc(100% - 64px) 0,100% 64px,100% 100%,0 100%)}
 .band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:32% 30%;display:block}
@@ -150,6 +149,19 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
 .inc li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--or)}
 .inc li.t{font-weight:600;color:var(--ink)}
 .inc li.t::before{display:none}
+/* tamna verzija: kartice samo sa okvirom, istaknuta bela */
+.rz .card{border:1px solid rgba(255,255,255,.16);background:transparent}
+.rz .card .ic{background:rgba(255,255,255,.08)}
+.rz .card p{color:rgba(255,255,255,.74)}
+.rz .card .chip{color:var(--or)}
+.rz .card.feat{border-color:#fff;background:#fff;color:var(--ink)}
+.rz .card.feat .ic{background:var(--mist)}
+.rz .card.feat p{color:var(--mut)}
+.rz .card.feat .chip{color:var(--ort)}
+.rz .rz-foot{border-top-color:rgba(255,255,255,.16)}
+.rz .inc{color:rgba(255,255,255,.86)}
+.rz .inc li.t{color:#fff}
+.dk .more:hover,.dk .more:focus-visible{color:var(--or)}
 
 /* odabrani rad */
 .pj{position:relative;background:#fff;color:var(--ink)}
@@ -180,48 +192,6 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
 .stats div{padding:24px 0 0;border-top:2px solid var(--ink)}
 .stats dt{font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:48px;line-height:1;letter-spacing:-.02em;color:var(--ord);font-variant-numeric:lining-nums tabular-nums}
 .stats dd{margin:8px 0 0;font-size:14px;line-height:1.4;color:var(--mut)}
-
-/* usluge: pločice koje se uvek vide (bez skrivanja do prelaska mišem) */
-.sv{background:var(--deep);color:#fff}
-.sx-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 24px;margin:0;padding:0;list-style:none}
-.sx-row{display:flex;flex-direction:column;gap:16px;color:#fff;text-decoration:none}
-.sx-img{display:block;aspect-ratio:4/3;overflow:hidden;background:#141414}
-.sx-img img,.sx-stage img{display:block;width:100%;height:100%;object-fit:cover}
-.sx-t{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:8px}
-.sx-t b{font-size:24px;font-weight:800;line-height:1;letter-spacing:-.03em;text-transform:uppercase;text-wrap:balance}
-.sx-t svg{flex:none;color:var(--or);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.sx-p{max-width:440px;font-size:16px;line-height:1.6;color:rgba(255,255,255,.74);text-wrap:pretty}
-.sx-row:hover .sx-t svg,.sx-row:focus-visible .sx-t svg{transform:translateX(4px)}
-.sx-t b{transition:color .25s}
-.sx-row:is(:hover,:focus-visible,:active) .sx-t b{color:var(--or)}
-.sx-row:active .sx-t svg{transform:translateX(4px)}
-.sx-stage{display:none}
-@media (min-width: 1024px) and (hover: hover){
-  .sx{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:start}
-  .sx-list{display:block;border-top:1px solid rgba(255,255,255,.16)}
-  .sx-list li{border-bottom:1px solid rgba(255,255,255,.16)}
-  .sx-row{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:32px 0;transition:opacity .35s}
-  .sx-img{display:none}
-  .sx-t{padding:0;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
-  .sx-t b{font-size:32px;transition:color .3s}
-  .sx-t svg{width:24px;height:24px}
-  .sx-list:has(.sx-row:is(:hover,:focus-visible)) .sx-row:not(:hover,:focus-visible){opacity:.4}
-  .sx-row:is(:hover,:focus-visible) .sx-t{transform:translateX(8px)}
-  .sx-row:is(:hover,:focus-visible) .sx-t b{color:var(--or)}
-  .sx-stage{display:block;position:sticky;top:120px;aspect-ratio:3/4;overflow:hidden;background:#141414}
-  .sx-stage img{position:absolute;inset:0;opacity:.001;transform:scale(1.041);transition:opacity .6s ease 9999s,transform 1.2s cubic-bezier(.2,.7,.2,1) 9999s}
-  .sx-stage img:first-child{opacity:.999;transform:scale(1.0001)}
-  .sx:has(.sx-row:is(:hover,:focus-visible)) .sx-stage img{opacity:0;transform:scale(1.04);transition-delay:0s}
-  .sx:has(li:nth-child(1) .sx-row:is(:hover,:focus-visible)) .sx-stage img:nth-child(1),
-  .sx:has(li:nth-child(2) .sx-row:is(:hover,:focus-visible)) .sx-stage img:nth-child(2),
-  .sx:has(li:nth-child(3) .sx-row:is(:hover,:focus-visible)) .sx-stage img:nth-child(3),
-  .sx:has(li:nth-child(4) .sx-row:is(:hover,:focus-visible)) .sx-stage img:nth-child(4){opacity:1;transform:none;transition-delay:0s}
-}
-.sv-caps{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:24px;align-items:start;margin-top:64px}
-.sv-caps h3{margin:8px 0 0;font-family:'Newsreader',Georgia,serif;font-style:italic;font-weight:400;font-size:24px;line-height:1.2;color:var(--or)}
-.sv-caps ul{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.sv-caps li{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid rgba(255,255,255,.2);border-radius:999px;font-size:14px;line-height:1.4;color:rgba(255,255,255,.86)}
-.sv-caps li::before{content:"";width:6px;height:6px;flex:none;border-radius:50%;background:var(--or)}
 
 /* pristup: levo naslov, desno tok rada sa čvorovima (bez brojeva) */
 .pr{background:#fff}
@@ -361,8 +331,6 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
   .nav-links,.hdr-cta{display:none}
   .menu-btn{display:inline-flex}
   .hero-in{min-height:0;padding-top:144px;padding-bottom:48px}
-  .hero-bg::after{background:linear-gradient(180deg,rgba(11,26,26,.62) 0%,rgba(11,26,26,.78) 45%,rgba(11,26,26,.9) 100%)}
-  .hero-bg img{object-position:62% 50%}
   .facts{position:relative}
   .facts .wrap{flex-direction:column;align-items:flex-start;gap:24px;padding-bottom:48px}
   .facts dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px;padding:0}
@@ -376,7 +344,6 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
   .card{min-height:0}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:64px}
   .pj-cap{grid-template-columns:minmax(0,1fr);gap:32px}
-  .sv-caps{grid-template-columns:minmax(0,1fr);gap:16px}
   .kt-media{position:relative;width:auto;height:440px;margin:0 calc(-1 * max(32px,env(safe-area-inset-left))) 0}
   .kt-media .kt-t{display:none}
   .kt-media .kt-w{display:block}
@@ -398,7 +365,7 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
   .ns .band .note{left:16px;bottom:16px}
   .ns .cards{grid-template-columns:minmax(0,1fr);gap:16px}
   .ns .card{padding:24px}
-  .ns .card p,.ns .pk-desc,.ns .pk-list,.ns .sv-caps li,.ns .rules span,.ns .kt-note,.ns .pj-meta div,.ns .stats dd,.ns .inc{font-size:16px}
+  .ns .card p,.ns .pk-desc,.ns .pk-list,.ns .rules span,.ns .kt-note,.ns .pj-meta div,.ns .stats dd,.ns .inc{font-size:16px}
   .ns .pj-meta{grid-template-columns:minmax(0,1fr);gap:0}
   .ns .pj-meta div{padding:12px 0;border-left:0;border-top:1px solid rgba(11,26,26,.14)}
   .ns .pj-card{padding:8px}
@@ -407,8 +374,6 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
   .ns .stats{gap:32px 16px}
   .ns .stats div{padding:16px 0 0}
   .ns .stats dt{font-size:40px}
-  .ns .sx-list{grid-template-columns:minmax(0,1fr)}
-  .ns .sv-caps{margin-top:48px}
   .ns .flow{padding-left:32px}
   .ns .flow li::before{left:-32px}
   .ns .flow-box{grid-template-columns:minmax(0,1fr);gap:16px;padding:24px}
@@ -422,10 +387,10 @@ a.hdr-cta,a.hdr-cta:hover{color:#fff}
   .ns .ft-bottom{flex-direction:column;align-items:flex-start;gap:8px;padding-bottom:calc(32px + env(safe-area-inset-bottom))}
 }
 @media (max-width: 359px){.ns .dh{font-size:34px}.ns .b{padding:0 16px;letter-spacing:.04em;font-size:13px}}
-@media (pointer: coarse){.ns .ft-col li a,.ns .tlink{min-height:44px}.ns.framed .ft-bottom{padding-bottom:calc(128px + env(safe-area-inset-bottom))}}
+@media (pointer: coarse){.ns .ft-col li a,.ns .tlink{min-height:44px}.ns .ft-col li a{min-width:44px}.ns.framed .ft-bottom{padding-bottom:calc(128px + env(safe-area-inset-bottom))}}
 @media (hover: none){.ns .b:hover{translate:none}}
 @media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
-@media (prefers-reduced-motion: reduce){.ns *,.ns *::before,.ns *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.ns .sx-stage img{transform:none!important}}
+@media (prefers-reduced-motion: reduce){.ns *,.ns *::before,.ns *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
 /* animacije: jedna izražena u uvodu, ostalo jedno blago pojavljivanje */
 @keyframes ns-rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
@@ -450,7 +415,7 @@ html.nsc-lk .nsc-dot{scale:.5}
 html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
 /* obostrano poravnat tekst samo u širokim blokovima (60–75 znakova u redu), bez rastavljanja reči; samo računar */
 @media (min-width:1200px){
-  .ns :is(.fq-list p,.sx-p,.kt-text p:not(.ey),.pk-note p){text-align:justify;-webkit-hyphens:manual;hyphens:manual;text-wrap:pretty}
+  .ns :is(.fq-list p,.kt-text p:not(.ey),.pk-note p){text-align:justify;-webkit-hyphens:manual;hyphens:manual;text-wrap:pretty}
 }
 /* prelomi (30.10.): podaci o projektu — šira kolona „Uradili smo“, uža „Jezici“; napomena ispod paketa — svaka rečenica u jednom redu */
 @media (min-width:1200px){
@@ -460,6 +425,19 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
 .ns .pj-intro .lead{text-wrap:balance}
 /* naslovi pravila u EN: ravnomerno u dva reda (SR je već dobar, ne dirati) */
 :root:lang(en) .ns .rules b{text-wrap:balance}
+/* uvod: jedna mirna slika (2 prozora, telefon, 2 kartončića; izmišljeni sajtovi), SR i EN posebno — izvor: aseti/_alati/uvod-kompozicija/comp.html, snimak 3x */
+.hv{position:absolute;z-index:1;pointer-events:none;aspect-ratio:600/540}
+.ns .hv img{position:absolute;left:-16%;top:-17.7778%;width:132%;height:auto;max-width:none}
+@media (min-width:1280px){
+ .ns .hero h1{max-width:760px}
+ .hv{left:calc((100vw - 1104px)/2 + 780px);top:50%;width:min(600px,calc(100vw - (100vw - 1104px)/2 - 804px));transform:translateY(-48%)}
+}
+@media (max-width:1279px){
+ .hv{left:50%;top:104px;width:min(88vw,560px);transform:translateX(-50%)}
+ .ns .hero-bg::after{background:none}
+ .ns .hero-in{min-height:0;padding-top:calc(104px + min(88vw,560px)*0.9 + 32px)}
+}
+.ns.motion .hero-bg{animation:none}
 </style>
 </head>
 <body>
@@ -477,7 +455,6 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
   </a>
   <nav aria-label="Glavna navigacija" class="nav-links">
     <a href="#projekat">Radovi</a>
-    <a href="#usluge">Usluge</a>
     <a href="#pristup">Proces</a>
     <a href="#paketi">Paketi</a>
     <a href="#kontakt">Kontakt</a>
@@ -494,7 +471,6 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
 <nav id="mnav" class="mnav" aria-label="Mobilni meni">
   <ul>
     <li><a href="#projekat">Radovi<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-    <li><a href="#usluge">Usluge<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
     <li><a href="#pristup">Proces<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
     <li><a href="#paketi">Paketi<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
     <li><a href="#kontakt">Kontakt<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
@@ -507,11 +483,13 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
 
 <!-- UVOD -->
 <section id="vrh" class="hero">
-  <div class="hero-bg" aria-hidden="true"><img src="assets/102582dc2ebc077a914c7c09be0befe9.webp" alt="" width="2400" height="1340" fetchpriority="high" decoding="async"></div>
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hv"><img src="assets/48b9f9e0291053b792277d8f4ed31541.webp" alt="" width="2376" height="2196" fetchpriority="high" decoding="async"></div>
+  </div>
   <svg class="net" viewBox="0 0 640 420" aria-hidden="true"><g stroke-width="1" fill="none"><path d="M40 300L110 230L180 280L330 320L450 300L560 260L590 120L520 180L420 140L470 60M110 230L150 160L250 190L180 280M250 190L300 110L420 140L360 210L250 190M360 210L330 320M450 300L520 180M560 260L520 180"/></g><g><circle cx="40" cy="300" r="2" fill-opacity="0.5"/><circle cx="110" cy="230" r="2.5" fill-opacity="0.7"/><circle cx="180" cy="280" r="2" fill-opacity="0.5"/><circle cx="150" cy="160" r="2" fill-opacity="0.6"/><circle cx="250" cy="190" r="3" fill-opacity="0.8"/><circle cx="300" cy="110" r="2" fill-opacity="0.5"/><circle cx="360" cy="210" r="2.5" fill-opacity="0.7"/><circle cx="420" cy="140" r="3" fill-opacity="0.8"/><circle cx="470" cy="60" r="2" fill-opacity="0.5"/><circle cx="520" cy="180" r="2.5" fill-opacity="0.7"/><circle cx="590" cy="120" r="2" fill-opacity="0.5"/><circle cx="560" cy="260" r="2" fill-opacity="0.6"/><circle cx="450" cy="300" r="2.5" fill-opacity="0.7"/><circle cx="330" cy="320" r="2" fill-opacity="0.5"/></g></svg>
   <div class="wrap hero-in">
     <p class="ey in"><span>Web dizajn i izrada sajtova</span><i aria-hidden="true"></i></p>
-    <h1 class="dh in d1">Sajt koji posetioce<em>pretvara u upite.</em></h1>
+    <h1 class="dh in d1">Kupci vas biraju<em>pre prvog poziva.</em></h1>
     <p class="hero-p in d2">Za firme koje ozbiljno rade i žele da to vidi svaki posetilac.<br>Od prvog razgovora do objave, a cenu i obim znate unapred.</p>
     <div class="acts in d3">
       <a class="b" href="#kontakt">Zakažite konsultacije<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
@@ -579,7 +557,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
 </section>
 
 <!-- ŠTA DOBIJATE -->
-<section id="rezultat" class="rz">
+<section id="rezultat" class="rz dk">
   <div class="wrap pad">
     <div class="sh">
       <div class="rv"><p class="ey">Šta dobijate</p><h2 class="dh">Od pretrage do upita<em>u tri koraka.</em></h2></div>
@@ -611,31 +589,6 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
         <li class="t">U svaki sajt ulazi:</li><li>Prikaz prilagođen svim ekranima</li><li>Brzo učitavanje</li><li>Tehnička SEO osnova</li><li>Provera pre objave</li><li>Podrška posle objave</li>
       </ul>
       <a class="more" href="#kontakt">Besplatna analiza: tri stvari koje bismo prve popravili<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
-  </div>
-</section>
-
-<!-- USLUGE -->
-<section id="usluge" class="sv dk">
-  <div class="wrap pad">
-    <div class="sh">
-      <div class="rv"><p class="ey">Usluge</p><h2 class="dh">Prava vrsta sajta<em>za vaš posao.</em></h2></div>
-      <p class="lead rv d2">Rešenje biramo prema vašem cilju. Pre početka pisano navodimo šta ulazi u ponudu.</p>
-    </div>
-    <div class="sx">
-      <ul class="sx-list">
-        <li><a class="sx-row" href="#paketi"><span class="sx-img" aria-hidden="true"><img src="assets/51d0f6d8ffd409457838685e6132c8e2.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"></span><span class="sx-t"><b>Landing stranica</b><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="sx-p">Za jednu ponudu, kampanju ili uslugu kojoj treba jasan put do upita.</span></a></li>
-        <li><a class="sx-row" href="#paketi"><span class="sx-img" aria-hidden="true"><img src="assets/798e5210e34f25ec2b98215a8c3921ef.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"></span><span class="sx-t"><b>Poslovni sajt</b><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="sx-p">Za firmu sa više usluga, na jednom ili dva jezika, da kupac razume ponudu i pre prvog poziva.</span></a></li>
-        <li><a class="sx-row" href="#paketi"><span class="sx-img" aria-hidden="true"><img src="assets/229b923de8767749f036d70acb855748.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"></span><span class="sx-t"><b>Portfolio sajt</b><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="sx-p">Za svakoga ko želi da pokaže svoje radove i njima privuče nove klijente.</span></a></li>
-        <li><a class="sx-row" href="#kontakt"><span class="sx-img" aria-hidden="true"><img src="assets/aa6789c19161ac94631b97765291bec8.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"></span><span class="sx-t"><b>Održavanje sajta</b><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="sx-p">Za postojeći sajt koji treba popraviti ili redovno ažurirati, a vi nemate vremena za to.</span></a></li>
-      </ul>
-      <div class="sx-stage" aria-hidden="true"><img src="assets/51d0f6d8ffd409457838685e6132c8e2.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"><img src="assets/798e5210e34f25ec2b98215a8c3921ef.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"><img src="assets/229b923de8767749f036d70acb855748.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"><img src="assets/aa6789c19161ac94631b97765291bec8.webp" alt="" width="1050" height="1406" loading="lazy" decoding="async"></div>
-    </div>
-    <div class="sv-caps rv">
-      <h3>Po potrebi uključujemo</h3>
-      <ul>
-        <li>Sajtovi na dva i tri jezika</li><li>Blog sa kategorijama</li><li>SEO podešavanja</li><li>Google Analytics i Search Console</li><li>Kontakt forme</li><li>Povezivanje sa drugim sistemima</li><li>WordPress · Elementor</li><li>Astro · Next.js · React</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -697,7 +650,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
       <article class="pk-card">
         <span class="pk-eyebrow">Za jednu uslugu ili kampanju</span>
         <h3 class="pk-name">Start</h3>
-        <div class="pk-price"><span class="pk-from">od</span><span class="pk-amount">690 €</span><span class="pk-unit">jednokratno</span></div>
+        <div class="pk-price"><span class="pk-from">od</span><span class="pk-amount">790 €</span><span class="pk-unit">jednokratno</span></div>
         <p class="pk-desc">Jedna stranica koja jasno predstavlja jednu ponudu.</p>
         <ul class="pk-list"><li>Landing stranica do 5 sekcija</li><li>Prilagođeno telefonu i tabletu</li><li>Sajt na dva jezika</li><li>Kontakt forma</li><li>Osnovna SEO podešavanja</li><li>Prijava na Google pretraživač</li></ul>
         <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Rok izrade: 1–2 nedelje</span></div>
@@ -707,7 +660,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
         <span class="pk-badge">Preporučujemo</span>
         <span class="pk-eyebrow">Za firme i uslužne delatnosti</span>
         <h3 class="pk-name">Biznis</h3>
-        <div class="pk-price"><span class="pk-from">od</span><span class="pk-amount">1.790 €</span><span class="pk-unit">jednokratno</span></div>
+        <div class="pk-price"><span class="pk-from">od</span><span class="pk-amount">1.890 €</span><span class="pk-unit">jednokratno</span></div>
         <p class="pk-desc">Ceo sajt firme, koji sami uređujete ili mi za vas.</p>
         <ul class="pk-list"><li>Do 10 stranica</li><li>Dizajn prilagođen brendu</li><li>Sajt na dva jezika</li><li>Samostalna izmena sadržaja</li><li>SEO podešavanja i Google Analytics</li><li>Prijava na pretraživače i Search Console</li></ul>
         <div class="pk-time"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Rok izrade: 2–3 nedelje</span></div>
@@ -750,7 +703,7 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
         <a class="more" href="#kontakt">Postavite pitanje<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="fq-list rv d2">
-        <details open><summary>Koliko košta izrada sajta?<span class="pm" aria-hidden="true"></span></summary><p>Landing stranica od 690&nbsp;€, poslovni sajt od 1.790&nbsp;€, a sajt sa blogom i tri jezika od 2.990&nbsp;€. Tačnu cenu dobijate pisano posle besplatne konsultacije i ona se posle ne menja.</p></details>
+        <details open><summary>Koliko košta izrada sajta?<span class="pm" aria-hidden="true"></span></summary><p>Landing stranica od 790&nbsp;€, poslovni sajt od 1.890&nbsp;€, a sajt sa blogom i tri jezika od 2.990&nbsp;€. Tačnu cenu dobijate pisano posle besplatne konsultacije i ona se posle ne menja.</p></details>
         <details><summary>Koliko traje izrada?<span class="pm" aria-hidden="true"></span></summary><p>Landing stranica 1–2 nedelje, poslovni sajt 2–3 nedelje, veći sajt 3–5 nedelja. Rok zavisi i od toga kada stignu tekstovi i fotografije.</p></details>
         <details><summary>Zašto ste skuplji od ponuda iz oglasa?<span class="pm" aria-hidden="true"></span></summary><p>Za jednostavnu vizitkartu jeftinija ponuda može biti dovoljna. Naša cena uključuje razgovor o vašem poslu, plan sadržaja, dizajn i proveru na svim ekranima. Izračunajte koliko vam vredi jedan novi klijent, jer sajt treba da ih donosi godinama.</p></details>
         <details><summary>Mogu li sam da menjam sadržaj?<span class="pm" aria-hidden="true"></span></summary><p>Da, ako to želite. Tada sajt pravimo u WordPress-u i Elementoru i dobijate kratko uputstvo za uređivanje. Ako izmene prepustite nama, sajt pravimo u savremenim tehnologijama kao što su Astro, Next.js i React. Takav sajt se brže učitava, a sve izmene radimo mi.</p></details>
@@ -804,10 +757,10 @@ html.nsc-on.nsc-tx .nsc-dot,html.nsc-on.nsc-tx .nsc-ring{opacity:0}
       <nav class="ft-col" aria-label="Usluge">
         <h2>Usluge</h2>
         <ul>
-          <li><a href="#usluge">Landing stranica</a></li>
-          <li><a href="#usluge">Poslovni sajt</a></li>
-          <li><a href="#usluge">Portfolio sajt</a></li>
-          <li><a href="#usluge">Održavanje sajta</a></li>
+          <li><a href="#paketi">Landing stranica</a></li>
+          <li><a href="#paketi">Poslovni sajt</a></li>
+          <li><a href="#paketi">Portfolio sajt</a></li>
+          <li><a href="#kontakt">Održavanje sajta</a></li>
         </ul>
       </nav>
       <nav class="ft-col" aria-label="Studio">

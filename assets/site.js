@@ -25,6 +25,7 @@
   addEventListener('resize', function () { if (innerWidth >= 1024 && open) { open = false; upd(); } }, { passive: true });
   if (b) b.addEventListener('click', function () { open = !open; upd(); });
   if (m) m.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { open = false; upd(); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) { open = false; upd(); if (b) b.focus(); } });
 
   // pojavljivanje pri skrolu
   var els = document.querySelectorAll('.rv, .rvi');
