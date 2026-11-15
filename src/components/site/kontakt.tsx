@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import { putanja } from "@/lib/putanja";
 
 const EMAIL = "kontakt@netifystudio.com";
 
@@ -44,7 +45,7 @@ export function Kontakt() {
       {/* Diskretna noćna fotografija u pozadini desno */}
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[44%] lg:block" aria-hidden>
         <Image
-          src="/works/kontakt-noc.jpg"
+          src={putanja("/works/kontakt-noc.jpg")}
           alt=""
           fill
           sizes="44vw"
@@ -164,7 +165,7 @@ export function Kontakt() {
                 ["Proces", "#proces"],
                 ["Paketi", "#paketi"],
                 ["Kontakt", "#kontakt"],
-                ["Politika privatnosti", "/politika-privatnosti"],
+                ["Politika privatnosti", putanja("/politika-privatnosti/")],
               ].map(([l, h]) => (
                 <a
                   key={h}

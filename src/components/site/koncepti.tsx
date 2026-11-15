@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import { putanja } from "@/lib/putanja";
 import { BrowserFrame } from "@/components/site/browser-frame";
 
 const KONCEPTI = [
@@ -11,42 +12,42 @@ const KONCEPTI = [
     url: "aurelija.rs",
     naziv: "Aurelija",
     opis: "Vinarija — vino koje priča o mestu.",
-    slika: "/works/site-aurelija.jpg",
+    slika: putanja("/works/site-aurelija.jpg"),
   },
   {
     id: "mirna",
     url: "vile-mirna.com",
     naziv: "Mirna",
     opis: "Planinske vile — odmor koji se pamti.",
-    slika: "/works/koncept-mirna.jpg",
+    slika: putanja("/works/koncept-mirna.jpg"),
   },
   {
     id: "arken",
     url: "arken.studio",
     naziv: "Arken",
     opis: "Arhitektonski studio — prostor oblikovan svetlom.",
-    slika: "/works/koncept-arken.jpg",
+    slika: putanja("/works/koncept-arken.jpg"),
   },
   {
     id: "trpeza",
     url: "trpeza.rs",
     naziv: "Trpeza",
     opis: "Restoran — domaća kuhinja, moderan ukus.",
-    slika: "/works/koncept-trpeza.jpg",
+    slika: putanja("/works/koncept-trpeza.jpg"),
   },
   {
     id: "vidik",
     url: "vidik.legal",
     naziv: "Vidik",
     opis: "Advokatska kancelarija — pravna sigurnost za vaš posao.",
-    slika: "/works/koncept-vidik.jpg",
+    slika: putanja("/works/koncept-vidik.jpg"),
   },
   {
     id: "sola",
     url: "solaceramics.com",
     naziv: "Sola Ceramics",
     opis: "Radnja keramike — ručni rad za svaki dan.",
-    slika: "/works/koncept-sola.jpg",
+    slika: putanja("/works/koncept-sola.jpg"),
   },
 ];
 

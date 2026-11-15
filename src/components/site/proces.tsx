@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import { putanja } from "@/lib/putanja";
 
 const KORACI = [
   {
@@ -63,7 +64,7 @@ export function Proces() {
             <figure className="lg:sticky lg:top-28">
               <div className="overflow-hidden rounded-lg ring-1 ring-foreground/10">
                 <Image
-                  src="/works/proces-studio.jpg"
+                  src={putanja("/works/proces-studio.jpg")}
                   alt="Radni sto studija: monitor sa dizajnom sajta i skice u svesci"
                   width={1600}
                   height={900}

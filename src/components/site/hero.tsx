@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import { putanja } from "@/lib/putanja";
 
 const NAV = [
   { label: "Radovi", href: "#radovi" },
@@ -62,7 +63,7 @@ function WorkWindow() {
       </div>
       <div className="relative aspect-[16/10]">
         <Image
-          src="/works/site-mirna.jpg"
+          src={putanja("/works/site-mirna.jpg")}
           alt="Koncept sajta za planinske vile Mirna"
           fill
           priority
@@ -84,7 +85,7 @@ export function Hero() {
           style={{ animation: "kenburns 30s ease-out forwards" }}
         >
           <Image
-            src="/works/backdrop-mirna.jpg"
+            src={putanja("/works/backdrop-mirna.jpg")}
             alt=""
             fill
             priority

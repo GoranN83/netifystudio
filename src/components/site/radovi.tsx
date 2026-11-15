@@ -1,4 +1,5 @@
 import { BlurFade } from "@/components/magicui/blur-fade";
+import { putanja } from "@/lib/putanja";
 import { BrowserFrame } from "@/components/site/browser-frame";
 import { Koncepti } from "@/components/site/koncepti";
 
@@ -58,8 +59,8 @@ export function Radovi() {
           <BlurFade inView delay={0.25} duration={0.8} direction="up" offset={10}>
             <BrowserFrame url="ultracutsolution.com" tone="light">
               <video
-                src="/works/ultracut-intro.mp4"
-                poster="/works/site-ultracut.jpg"
+                src={putanja("/works/ultracut-intro.mp4")}
+                poster={putanja("/works/site-ultracut.jpg")}
                 muted
                 loop
                 playsInline
